@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="CustomAgent">
-    <output-path>$USER_HOME$/Desktop</output-path>
-    <root id="archive" name="CustomAgent.jar" />
-  </artifact>
-</component>
