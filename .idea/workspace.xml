@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19cd0964-fba5-41e5-b4f0-3682189836f6" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/AgentLoader.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/AgentLoader.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/data/Constants.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/data/Constants.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/ui/ControlView.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/ControlView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/ui/LandingView.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LandingView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/ui/LauncherController.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/ui/LauncherModel.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/osbot/jailbrake/utils/NetUtils.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/utils/NetUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java" afterPath="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +41,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LauncherModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LauncherModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -69,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LauncherController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LauncherController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="328">
+              <caret line="56" column="32" lean-forward="false" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -94,6 +86,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/osbot/jailbreak/data/Constants.java" />
         <option value="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherModel.java" />
+        <option value="$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java" />
       </list>
     </option>
   </component>
@@ -474,7 +467,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -529,14 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/osbot/jailbreak/AgentLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -549,6 +534,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="59" column="24" lean-forward="true" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/osbot/jailbreak/ui/LauncherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="56" column="32" lean-forward="false" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
           <folding />
         </state>
       </provider>

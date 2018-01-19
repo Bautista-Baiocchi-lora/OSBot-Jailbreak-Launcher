@@ -46,7 +46,7 @@ public class LauncherController extends JFrame implements ActionListener {
 
 	public void jailbreak() {
 		model.downloadJailbreak();
-		if (model.verifyHwid() && model.isVIP()) {
+		if (model.verifyHWID() && model.isVIP()) {
 			model.startJailbreak();
 			System.exit(0);
 		}
@@ -54,7 +54,7 @@ public class LauncherController extends JFrame implements ActionListener {
 
 	public void login(String email, String password) {
 		if (model.login(email, password)) {
-			if (model.verifyHwid()) {
+			if (model.verifyHWID()) {
 				if (model.isVIP()) {
 					this.controlView = new ControlView(this);
 					remove(landingView);
