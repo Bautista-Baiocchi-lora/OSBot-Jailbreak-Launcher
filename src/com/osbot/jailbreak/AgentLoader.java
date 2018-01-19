@@ -1,7 +1,7 @@
-package com.osbot.jailbrake;
+package com.osbot.jailbreak;
 
-import com.osbot.jailbrake.data.Constants;
-import com.osbot.jailbrake.ui.LauncherController;
+import com.osbot.jailbreak.data.Constants;
+import com.osbot.jailbreak.ui.LauncherController;
 
 import java.io.File;
 

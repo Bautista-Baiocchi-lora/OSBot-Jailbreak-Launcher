@@ -1,6 +1,6 @@
-package com.osbot.jailbrake.utils;
+package com.osbot.jailbreak.utils;
 
-import com.osbot.jailbrake.data.Constants;
+import com.osbot.jailbreak.data.Constants;
 
 import java.awt.*;
 import java.io.*;

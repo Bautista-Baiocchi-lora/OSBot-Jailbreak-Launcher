@@ -1,4 +1,4 @@
-package com.osbot.jailbrake.ui;
+package com.osbot.jailbreak.ui;
 
 import javax.swing.*;
 import java.awt.*;

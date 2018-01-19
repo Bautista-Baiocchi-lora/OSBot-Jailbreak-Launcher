@@ -1,7 +1,7 @@
-package com.osbot.jailbrake.ui;
+package com.osbot.jailbreak.ui;
 
-import com.osbot.jailbrake.data.Constants;
-import com.osbot.jailbrake.utils.NetUtils;
+import com.osbot.jailbreak.data.Constants;
+import com.osbot.jailbreak.utils.NetUtils;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 
@@ -26,11 +26,12 @@ public class LauncherModel {
 	}
 
 	public boolean isVIP() {
+		final String VERIFY_VIP_URL = "http://botupgrade.us/private/check/paid.php?";
 		StringBuilder parameters = new StringBuilder();
 		parameters.append("uid=").append(id).append("&submit=Search");
 		String response = null;
 		try {
-			response = NetUtils.getResponse(Constants.VERIFY_VIP_URL, parameters.toString());
+			response = NetUtils.getResponse(VERIFY_VIP_URL, parameters.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -42,10 +43,11 @@ public class LauncherModel {
 		return false;
 	}
 
-	public boolean verifyHwid() {
+	public boolean verifyHWID() {
 		StringBuilder parameters = new StringBuilder();
+		final String VERIFY_ACCESS_URL = "http://botupgrade.us/private/check/check.php?";
 		try {
-			parameters.append("search=").append(getHwid()).append("&submit=Search");
+			parameters.append("search=").append(getHWID()).append("&submit=Search");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
@@ -53,7 +55,7 @@ public class LauncherModel {
 		}
 		String response = null;
 		try {
-			response = NetUtils.getResponse(Constants.VERIFY_ACCESS_URL, parameters.toString());
+			response = NetUtils.getResponse(VERIFY_ACCESS_URL, parameters.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +67,7 @@ public class LauncherModel {
 		return false;
 	}
 
-	private String getHwid() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+	private String getHWID() throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		String s = "";
 		final String main = System.getenv("PROCESSOR_IDENTIFIER") + System.getenv("COMPUTERNAME") + System.getProperty("user.name").trim();
 		final byte[] bytes = main.getBytes("UTF-8");
@@ -125,11 +127,12 @@ public class LauncherModel {
 	}
 
 	public boolean login(String email, String password) {
+		final String LOGIN_URL = "http://botupgrade.us/private/login.php?";
 		StringBuilder parameters = new StringBuilder();
 		parameters.append("email=").append(email).append("&password=").append(password);
 		String response = null;
 		try {
-			response = NetUtils.getResponse(Constants.LOGIN_URL, parameters.toString());
+			response = NetUtils.getResponse(LOGIN_URL, parameters.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
