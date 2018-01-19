@@ -85,11 +85,8 @@ public class LauncherModel {
 		return s;
 	}
 
-	public void downloadJailbreak() {
-		File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
-		if (!agentFile.exists()) {
-			NetUtils.downloadJailbreak(jailbreakUrl);
-		}
+	public void downloadJailbreak() throws IOException {
+		NetUtils.downloadJailbreak(jailbreakUrl);
 	}
 
 	public void startJailbreak() {

@@ -4,10 +4,7 @@ import com.osbot.jailbreak.data.Constants;
 
 import java.awt.*;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.net.*;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
@@ -57,9 +54,15 @@ public class NetUtils {
 
 	public static void downloadJailbreak(String url) {
 		try {
+			File jailbreak = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
 			URL download = new URL(url);
-			ReadableByteChannel rbc = Channels.newChannel(download.openStream());
-			FileOutputStream fileOut = new FileOutputStream(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
+			URLConnection downloadConnection = download.openConnection();
+			final URLConnection savedFileConnection = jailbreak.toURI().toURL().openConnection();
+			if (savedFileConnection.getContentLength() == downloadConnection.getContentLength()) {
+				return;
+			}
+			ReadableByteChannel rbc = Channels.newChannel(downloadConnection.getInputStream());
+			FileOutputStream fileOut = new FileOutputStream(jailbreak);
 			fileOut.getChannel().transferFrom(rbc, 0, 1 << 24);
 			fileOut.close();
 			rbc.close();

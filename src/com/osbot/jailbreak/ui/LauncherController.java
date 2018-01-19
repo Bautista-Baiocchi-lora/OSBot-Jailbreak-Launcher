@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class LauncherController extends JFrame implements ActionListener {
 
@@ -46,7 +47,11 @@ public class LauncherController extends JFrame implements ActionListener {
 
 	public void jailbreak() {
 		if (model.verifyHWID() && model.isVIP()) {
-			model.downloadJailbreak();
+			try {
+				model.downloadJailbreak();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			model.startJailbreak();
 			System.exit(0);
 		}
