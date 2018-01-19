@@ -23,6 +23,7 @@ public class LoaderFrame extends JFrame implements ActionListener {
 	private final JMenuBar menuBar;
 	private final JMenu helpMenu;
 	private final JMenuItem requestAccess, forums;
+	private final JLabel status;
 
 	public LoaderFrame() {
 		super("OSBot Jailbreaker - BotUpgrade.us");
@@ -42,7 +43,10 @@ public class LoaderFrame extends JFrame implements ActionListener {
 		setJMenuBar(menuBar);
 
 		this.authors = new JLabel("Developed by: Mate & Dredd");
-		add(authors, BorderLayout.CENTER);
+		add(authors, BorderLayout.NORTH);
+
+		this.status = new JLabel("Status: Launcher Ready");
+		add(status, BorderLayout.CENTER);
 
 		this.jailbreak = new JButton("Jailbreak");
 		this.jailbreak.addActionListener(this::actionPerformed);
@@ -61,13 +65,14 @@ public class LoaderFrame extends JFrame implements ActionListener {
 				List<VirtualMachineDescriptor> jvms = VirtualMachine.list();
 				for (VirtualMachineDescriptor jvm : jvms) {
 					if (jvm.displayName().contains(Constants.APPLICATION_NAME)) {
-						System.out.println("OSBot client found!");
+						status.setText("Status: OSBot client found!");
 						jvmPid = jvm.id();
 						break;
 					}
 
 				}
 				if (jvmPid != null) {
+					status.setText("Status: Preparing jailbreak...");
 					File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
 					if (!agentFile.exists()) {
 						NetUtils.downloadJailbreak(RuntimeVariables.jarUrl);
@@ -77,11 +82,11 @@ public class LoaderFrame extends JFrame implements ActionListener {
 						String agentFileExtension = agentFileName.substring(agentFileName.lastIndexOf(".") + 1);
 						if (agentFileExtension.equalsIgnoreCase("jar")) {
 							try {
-								System.out.println("Jailbreaking...");
+								status.setText("Status: Starting jailbreak...");
 								VirtualMachine jvm = VirtualMachine.attach(jvmPid);
 								jvm.loadAgent(agentFile.getAbsolutePath());
 								jvm.detach();
-								System.out.println("Jailbreak successful!");
+								status.setText("Status: Jailbreak started!");
 							} catch (Exception exception) {
 								throw new RuntimeException(exception);
 							}
@@ -89,7 +94,7 @@ public class LoaderFrame extends JFrame implements ActionListener {
 						}
 					}
 				} else {
-					System.out.println("OSBot client not found!");
+					status.setText("Status: OSBot client not found!");
 				}
 				break;
 			case "prepare jailbreak":
