@@ -51,7 +51,7 @@ public class LandingView extends JPanel implements ActionListener {
 	public void actionPerformed(final ActionEvent e) {
 		switch (e.getActionCommand()){
 			case "login":
-				controller.login(email.getText(), password.getPassword().toString());
+				controller.login(email.getText(), new String(password.getPassword()));
 				break;
 			case "register":
 				controller.register();

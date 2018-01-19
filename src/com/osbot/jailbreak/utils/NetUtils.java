@@ -15,7 +15,7 @@ public class NetUtils {
 
 	private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; …) Gecko/20100101 Firefox/57.0";
 
-	public static String getResponse(String url, String parameter) throws IOException {
+	public static String postResponse(String url, String parameter) throws IOException {
 		URL requestTarget = new URL(url);
 		HttpURLConnection connection = (HttpURLConnection) requestTarget.openConnection();
 		connection.setRequestMethod("POST");
@@ -38,7 +38,22 @@ public class NetUtils {
 		System.out.println("HTTP request error!");
 		return null;
 	}
+	public static String getResponse(String url) throws Exception {
+		URL obj = new URL(url);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+		con.setRequestMethod("GET");
+		con.setRequestProperty("User-Agent", USER_AGENT);
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+		return response.toString();
 
+	}
 	public static void downloadJailbreak(String url) {
 		try {
 			URL download = new URL(url);

@@ -45,8 +45,8 @@ public class LauncherController extends JFrame implements ActionListener {
 
 
 	public void jailbreak() {
-		model.downloadJailbreak();
 		if (model.verifyHWID() && model.isVIP()) {
+			model.downloadJailbreak();
 			model.startJailbreak();
 			System.exit(0);
 		}

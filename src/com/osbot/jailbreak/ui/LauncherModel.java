@@ -31,12 +31,12 @@ public class LauncherModel {
 		parameters.append("uid=").append(id).append("&submit=Search");
 		String response = null;
 		try {
-			response = NetUtils.getResponse(VERIFY_VIP_URL, parameters.toString());
+			response = NetUtils.postResponse(VERIFY_VIP_URL, parameters.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		if (response != null) {
-			if (!response.equalsIgnoreCase("nope")) {
+			if(response.trim().equals("1")) {
 				return true;
 			}
 		}
@@ -55,13 +55,14 @@ public class LauncherModel {
 		}
 		String response = null;
 		try {
-			response = NetUtils.getResponse(VERIFY_ACCESS_URL, parameters.toString());
+			response = NetUtils.postResponse(VERIFY_ACCESS_URL, parameters.toString());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		if (response != null) {
 			if (response.contains("true")) {
 				jailbreakUrl = response.toString().trim().split(" ")[1];
+				return true;
 			}
 		}
 		return false;
@@ -81,6 +82,7 @@ public class LauncherModel {
 			}
 			i++;
 		}
+		System.out.println(s);
 		return s;
 	}
 
@@ -127,20 +129,22 @@ public class LauncherModel {
 	}
 
 	public boolean login(String email, String password) {
-		final String LOGIN_URL = "http://botupgrade.us/private/login.php?";
-		StringBuilder parameters = new StringBuilder();
-		parameters.append("email=").append(email).append("&password=").append(password);
+		System.out.println(email);
+		System.out.println(password);
+		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email="+email+"&password="+password;
 		String response = null;
 		try {
-			response = NetUtils.getResponse(LOGIN_URL, parameters.toString());
-		} catch (IOException e) {
+			response = NetUtils.getResponse(LOGIN_URL);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		if (response != null) {
 			if (response.contains("SUCCESS")) {
-				id = Integer.parseInt(response.split(" => ")[4].replace(" )", ""));
+				id = Integer.parseInt(response.split(" => ")[5].replace(")", ""));
 				return true;
 			}
+		} else {
+			System.out.println("NO RESPONSE?");
 		}
 		return false;
 	}
