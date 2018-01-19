@@ -82,8 +82,11 @@ public class LauncherModel {
 		return s;
 	}
 
-	public void downloadJailbreak(String url) {
-
+	public void downloadJailbreak() {
+		File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
+		if (!agentFile.exists()) {
+			NetUtils.downloadJailbreak(jailbreakUrl);
+		}
 	}
 
 	public void startJailbreak() {
@@ -100,9 +103,6 @@ public class LauncherModel {
 		if (jvmPid != null) {
 			System.out.println("Status: Preparing jailbreak...");
 			File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
-			if (!agentFile.exists()) {
-				NetUtils.downloadJailbreak(RuntimeVariables.jarUrl);
-			}
 			if (agentFile.isFile()) {
 				String agentFileName = agentFile.getName();
 				String agentFileExtension = agentFileName.substring(agentFileName.lastIndexOf(".") + 1);

@@ -45,16 +45,24 @@ public class LauncherController extends JFrame implements ActionListener {
 
 
 	public void jailbreak() {
-		model.startJailbreak();
+		model.downloadJailbreak();
+		if (model.verifyHwid() && model.isVIP()) {
+			model.startJailbreak();
+			System.exit(0);
+		}
 	}
 
 	public void login(String email, String password) {
 		if (model.login(email, password)) {
 			if (model.verifyHwid()) {
-				this.controlView = new ControlView(this);
-				remove(landingView);
-				add(controlView);
-				updateInterface();
+				if (model.isVIP()) {
+					this.controlView = new ControlView(this);
+					remove(landingView);
+					add(controlView);
+					updateInterface();
+				} else {
+					landingView.setStatus("You are not a VIP.");
+				}
 			} else if (landingView != null) {
 				landingView.setStatus("This device is not approved.");
 			}
