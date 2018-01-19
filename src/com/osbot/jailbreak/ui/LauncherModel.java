@@ -19,7 +19,7 @@ public class LauncherModel {
 
 	private final LauncherController controller;
 	private int id;
-	private String jailbreakUrl;
+	private String jailbreakUrl, hwid;
 
 	public LauncherModel(final LauncherController controller) {
 		this.controller = controller;
@@ -36,7 +36,7 @@ public class LauncherModel {
 			e.printStackTrace();
 		}
 		if (response != null) {
-			if(response.trim().equals("1")) {
+			if (response.trim().equals("1")) {
 				return true;
 			}
 		}
@@ -47,7 +47,7 @@ public class LauncherModel {
 		StringBuilder parameters = new StringBuilder();
 		final String VERIFY_ACCESS_URL = "http://botupgrade.us/private/check/check.php?";
 		try {
-			parameters.append("search=").append(getHWID()).append("&submit=Search");
+			parameters.append("search=").append(hwid = getHWID()).append("&submit=Search");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
@@ -82,7 +82,6 @@ public class LauncherModel {
 			}
 			i++;
 		}
-		System.out.println(s);
 		return s;
 	}
 
@@ -114,7 +113,8 @@ public class LauncherModel {
 					try {
 						System.out.println("Status: Starting jailbreak...");
 						VirtualMachine jvm = VirtualMachine.attach(jvmPid);
-						jvm.loadAgent(agentFile.getAbsolutePath());
+						StringBuilder agentParameters = new StringBuilder().append(id).append(":" + hwid);
+						jvm.loadAgent(agentFile.getAbsolutePath(), agentParameters.toString());
 						jvm.detach();
 						System.out.println("Status: Jailbreak started!");
 					} catch (Exception exception) {
@@ -129,9 +129,7 @@ public class LauncherModel {
 	}
 
 	public boolean login(String email, String password) {
-		System.out.println(email);
-		System.out.println(password);
-		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email="+email+"&password="+password;
+		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
 		String response = null;
 		try {
 			response = NetUtils.getResponse(LOGIN_URL);
@@ -144,7 +142,7 @@ public class LauncherModel {
 				return true;
 			}
 		} else {
-			System.out.println("NO RESPONSE?");
+			System.out.println("No response from login server.");
 		}
 		return false;
 	}

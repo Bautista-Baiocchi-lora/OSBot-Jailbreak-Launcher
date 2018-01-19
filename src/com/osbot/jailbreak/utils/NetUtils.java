@@ -38,13 +38,13 @@ public class NetUtils {
 		System.out.println("HTTP request error!");
 		return null;
 	}
+
 	public static String getResponse(String url) throws Exception {
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
 		con.setRequestProperty("User-Agent", USER_AGENT);
-		BufferedReader in = new BufferedReader(
-				new InputStreamReader(con.getInputStream()));
+		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
 		while ((inputLine = in.readLine()) != null) {
@@ -54,6 +54,7 @@ public class NetUtils {
 		return response.toString();
 
 	}
+
 	public static void downloadJailbreak(String url) {
 		try {
 			URL download = new URL(url);
