@@ -17,7 +17,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	private final JMenuItem requestAccess, forums;
 
 	public LauncherController() {
-		super("OSBot Jailbreaker - BotUpgrade.us");
+		super("Jailbreaker Launcher - BotUpgrade.us");
 		this.model = new LauncherModel(this);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -40,7 +40,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		this.landingView = new LandingView(this);
 		add(landingView, BorderLayout.CENTER);
 
-		setPreferredSize(new Dimension(300, 150));
+		this.setResizable(false);
 		pack();
 	}
 
@@ -64,7 +64,6 @@ public class LauncherController extends JFrame implements ActionListener {
 					this.controlView = new ControlView(this);
 					remove(landingView);
 					add(controlView);
-					updateInterface();
 				} else {
 					landingView.setStatus("You are not a VIP.");
 				}
@@ -74,6 +73,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		} else if (landingView != null) {
 			landingView.setStatus("Invalid email or password");
 		}
+		updateInterface();
 	}
 
 	public void register() {
