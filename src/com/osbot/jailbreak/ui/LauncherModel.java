@@ -121,7 +121,7 @@ public class LauncherModel {
 				}
 			}
 		} else {
-			System.out.println("Status: OSBot client not found!");
+			controller.clientNotFound();
 		}
 	}
 

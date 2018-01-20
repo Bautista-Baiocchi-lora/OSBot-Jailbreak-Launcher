@@ -16,7 +16,7 @@ public class ControlView extends JPanel implements ActionListener {
 	public ControlView(LauncherController controller) {
 		this.controller = controller;
 		this.setLayout(new BorderLayout());
-		this.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2), "Laucnher"));
+		this.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2), "Launcher"));
 
 		this.status = new JLabel("<html>Status: <font color='green'>Ready</font></html>");
 		add(status, BorderLayout.CENTER);

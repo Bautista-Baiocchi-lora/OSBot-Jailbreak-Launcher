@@ -57,6 +57,11 @@ public class LauncherController extends JFrame implements ActionListener {
 		}
 	}
 
+	public void clientNotFound() {
+		JOptionPane.showConfirmDialog(this, "OSBot client not found. Please open one before attempting to jailbreak.", "Error!", JOptionPane.DEFAULT_OPTION);
+		System.exit(0);
+	}
+
 	public void login(String email, String password) {
 		if (model.login(email, password)) {
 			if (model.verifyHWID()) {
