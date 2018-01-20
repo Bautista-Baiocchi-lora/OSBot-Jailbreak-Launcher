@@ -26,6 +26,7 @@ public class LauncherModel {
 	}
 
 	public boolean isVIP() {
+
 		final String VERIFY_VIP_URL = "http://botupgrade.us/private/check/paid.php?";
 		StringBuilder parameters = new StringBuilder();
 		parameters.append("uid=").append(id).append("&submit=Search");
@@ -45,7 +46,7 @@ public class LauncherModel {
 
 	public boolean verifyHWID() {
 		StringBuilder parameters = new StringBuilder();
-		final String VERIFY_ACCESS_URL = "http://botupgrade.us/private/check/check.php?";
+		final String VERIFY_ACCESS_URL = "http://botupgrade.us/hwid/check/check.php?";
 		try {
 			parameters.append("search=").append(hwid = getHWID()).append("&submit=Search");
 		} catch (UnsupportedEncodingException e) {
