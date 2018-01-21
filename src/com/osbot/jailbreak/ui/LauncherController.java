@@ -34,7 +34,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		this.menuBar.add(helpMenu);
 		setJMenuBar(menuBar);
 
-		this.authors = new JLabel("Developed by: Mate & Dredd");
+		this.authors = new JLabel("Developed by: Mate & Ethan");
 		add(authors, BorderLayout.NORTH);
 
 		this.landingView = new LandingView(this);
