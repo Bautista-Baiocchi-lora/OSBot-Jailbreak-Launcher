@@ -26,7 +26,6 @@ public class LauncherModel {
 	}
 
 	public boolean isVIP() {
-
 		final String VERIFY_VIP_URL = "http://botupgrade.us/private/check/paid.php?";
 		StringBuilder parameters = new StringBuilder();
 		parameters.append("uid=").append(id).append("&submit=Search");
@@ -69,7 +68,7 @@ public class LauncherModel {
 		return false;
 	}
 
-	private String getHWID() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+	public String getHWID() throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		String s = "";
 		final String main = System.getenv("PROCESSOR_IDENTIFIER") + System.getenv("COMPUTERNAME") + System.getProperty("user.name").trim();
 		final byte[] bytes = main.getBytes("UTF-8");
@@ -113,11 +112,12 @@ public class LauncherModel {
 					try {
 						System.out.println("Status: Starting jailbreak...");
 						VirtualMachine jvm = VirtualMachine.attach(jvmPid);
-						StringBuilder agentParameters = new StringBuilder().append(id).append(":" + hwid);
+						StringBuilder agentParameters = new StringBuilder().append(id).append(":" + hwid).append(":HtEk6jyT6kAgpHc6VbRbj");
 						jvm.loadAgent(agentFile.getAbsolutePath(), agentParameters.toString());
 						jvm.detach();
 						System.out.println("Status: Jailbreak started!");
 					} catch (Exception exception) {
+						controller.jailbreakFailed();
 						throw new RuntimeException(exception);
 					}
 					System.exit(0);
@@ -169,7 +169,7 @@ public class LauncherModel {
 
 	public void openRequestAccessPage() {
 		try {
-			NetUtils.openWebpage(new URL("http://botupgrade.us/forums/").toURI());
+			NetUtils.openWebpage(new URL("http://botupgrade.us/forums/index.php?/topic/6-request-trial/").toURI());
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		} catch (MalformedURLException e1) {

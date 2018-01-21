@@ -49,7 +49,6 @@ public class NetUtils {
 		}
 		in.close();
 		return response.toString();
-
 	}
 
 	public static void downloadJailbreak(String url) {

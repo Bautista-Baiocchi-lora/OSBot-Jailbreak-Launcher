@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Jailbreak Launcher:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Jailbreak_Launcher_jar</output-path>
+    <root id="archive" name="OSBot Jailbreaker.jar">
+      <element id="module-output" name="OSBot Jailbreaker" />
+    </root>
+  </artifact>
+</component>
