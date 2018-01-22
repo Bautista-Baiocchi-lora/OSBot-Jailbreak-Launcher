@@ -20,13 +20,10 @@ public class DownloadView extends JPanel {
 	public DownloadView(LauncherController controller, String source, String filename) {
 		this.controller = controller;
 
-		Box layout = Box.createVerticalBox();
-
 		this.progressBar = new JProgressBar(0, 100);
 		this.progressBar.setStringPainted(true);
 		this.progressBar.setString("Loading environment...");
 		this.progressBar.setPreferredSize(new Dimension(300, 50));
-		layout.add(progressBar);
 
 		downloader = new Downloader(source, filename);
 		downloader.addPropertyChangeListener(new PropertyChangeListener() {
@@ -37,7 +34,7 @@ public class DownloadView extends JPanel {
 				}
 			}
 		});
-		add(layout);
+		add(progressBar);
 	}
 
 	public void start() {

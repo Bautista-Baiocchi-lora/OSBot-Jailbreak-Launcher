@@ -26,6 +26,10 @@ public class LauncherModel {
 		this.controller = controller;
 	}
 
+	public int getID() {
+		return id;
+	}
+
 	public boolean isVIP() {
 		final String VERIFY_VIP_URL = "http://botupgrade.us/private/check/paid.php?";
 		StringBuilder parameters = new StringBuilder();
@@ -70,6 +74,9 @@ public class LauncherModel {
 	}
 
 	public String getHWID() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		if (hwid !=null) {
+			return hwid;
+		}
 		String s = "";
 		final String main = System.getenv("PROCESSOR_IDENTIFIER") + System.getenv("COMPUTERNAME") + System.getProperty("user.name").trim();
 		final byte[] bytes = main.getBytes("UTF-8");

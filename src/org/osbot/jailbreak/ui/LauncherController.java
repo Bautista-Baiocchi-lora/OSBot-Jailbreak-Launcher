@@ -17,6 +17,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	private LandingView landingView;
 	private DownloadView downloadView;
 	private ControlView controlView;
+	private JailbreakView jailbreakView;
 	private final JMenuBar menuBar;
 	private final JLabel authors;
 	private final JMenu helpMenu;
@@ -54,18 +55,38 @@ public class LauncherController extends JFrame implements ActionListener {
 		pack();
 	}
 
+	public int getId() {
+		return model.getID();
+	}
 
-	public void jailbreak() {
-		if (model.verifyHWID() && model.isVIP()) {
-			try {
-				model.downloadJailbreak();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			model.startJailbreak();
-			System.exit(0);
+	public String getHWID() {
+		try {
+			return model.getHWID();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public boolean verifyHWID() {
+		return model.verifyHWID();
+	}
+
+	public boolean isVIP(){
+		return model.isVIP();
+	}
+
+
+	public void downloadJailbreak() {
+		try {
+			model.downloadJailbreak();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
+
 
 	private void showDialog(String title, String message) {
 		JOptionPane.showConfirmDialog(this, message, title, JOptionPane.DEFAULT_OPTION);
@@ -92,7 +113,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	}
 
 	public void showControlView() {
-		if(downloadView!=null){
+		if (downloadView != null) {
 			remove(downloadView);
 		}
 		this.controlView = new ControlView(this);
@@ -110,6 +131,16 @@ public class LauncherController extends JFrame implements ActionListener {
 		} else {
 			showControlView();
 		}
+	}
+
+	public void jailbreak(){
+		if (controlView != null) {
+			remove(controlView);
+		}
+		jailbreakView = new JailbreakView(this);
+		add(jailbreakView);
+		jailbreakView.start();
+		updateInterface();
 	}
 
 	public void login(String email, String password) {
