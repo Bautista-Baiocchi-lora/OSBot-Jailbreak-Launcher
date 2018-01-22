@@ -96,7 +96,6 @@ public class LauncherModel {
 
 		String jvmPid = null;
 		List<VirtualMachineDescriptor> jvms = VirtualMachine.list();
-		System.out.println(jvms.size());
 		for (VirtualMachineDescriptor jvm : jvms) {
 			if (jvm.displayName().contains(Constants.APPLICATION_NAME)) {
 				System.out.println("Status: OSBot client found!");

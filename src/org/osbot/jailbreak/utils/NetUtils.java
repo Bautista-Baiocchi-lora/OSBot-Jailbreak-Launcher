@@ -10,13 +10,16 @@ import java.nio.channels.ReadableByteChannel;
 
 public class NetUtils {
 
-	private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; …) Gecko/20100101 Firefox/57.0";
+	public static HttpURLConnection getConnection(String url) throws IOException {
+		final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; …) Gecko/20100101 Firefox/57.0";
+		HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+		connection.setRequestProperty("User-Agent", USER_AGENT);
+		return connection;
+	}
 
 	public static String postResponse(String url, String parameter) throws IOException {
-		URL requestTarget = new URL(url);
-		HttpURLConnection connection = (HttpURLConnection) requestTarget.openConnection();
+		HttpURLConnection connection = getConnection(url);
 		connection.setRequestMethod("POST");
-		connection.setRequestProperty("User-Agent", USER_AGENT);
 		connection.setDoOutput(true);
 		OutputStream outputStream = connection.getOutputStream();
 		outputStream.write(parameter.getBytes());
@@ -37,10 +40,8 @@ public class NetUtils {
 	}
 
 	public static String getResponse(String url) throws Exception {
-		URL obj = new URL(url);
-		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+		HttpURLConnection con = getConnection(url);
 		con.setRequestMethod("GET");
-		con.setRequestProperty("User-Agent", USER_AGENT);
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
@@ -48,7 +49,7 @@ public class NetUtils {
 			response.append(inputLine);
 		}
 		in.close();
-		return response.toString();
+		return response.toString().trim();
 	}
 
 	public static void downloadJailbreak(String url) {

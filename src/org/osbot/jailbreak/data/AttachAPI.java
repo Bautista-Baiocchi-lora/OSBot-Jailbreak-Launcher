@@ -7,9 +7,6 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-/**
- * @author Alexey Ragozin (alexey.ragozin@gmail.com)
- */
 public class AttachAPI {
 
     private static boolean started;

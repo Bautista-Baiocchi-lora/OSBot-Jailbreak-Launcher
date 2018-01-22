@@ -35,8 +35,5 @@ public class Loader {
 		new LauncherController().setVisible(true);
 	}
 
-	public static void ensureToolsJar() {
-		// do nothing, just ensure call to static initializer
-	}
 }
 

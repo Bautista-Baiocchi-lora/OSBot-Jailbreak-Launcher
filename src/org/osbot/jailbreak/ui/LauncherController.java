@@ -1,9 +1,12 @@
 package org.osbot.jailbreak.ui;
 
+import org.osbot.jailbreak.data.Constants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -11,7 +14,8 @@ import java.security.NoSuchAlgorithmException;
 public class LauncherController extends JFrame implements ActionListener {
 
 	private final LauncherModel model;
-	private final LandingView landingView;
+	private LandingView landingView;
+	private DownloadView downloadView;
 	private ControlView controlView;
 	private final JMenuBar menuBar;
 	private final JLabel authors;
@@ -87,13 +91,34 @@ public class LauncherController extends JFrame implements ActionListener {
 		}
 	}
 
+	public void showControlView() {
+		if(downloadView!=null){
+			remove(downloadView);
+		}
+		this.controlView = new ControlView(this);
+		add(controlView);
+		updateInterface();
+	}
+
+	private void showDownloadView() {
+		final File environmentJar = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
+		if (!environmentJar.exists()) {
+			System.out.println("download");
+			this.downloadView = new DownloadView(this, "http://botupgrade.us/private/tools.jar", "environment");
+			add(downloadView, BorderLayout.CENTER);
+			updateInterface();
+			this.downloadView.start();
+		} else {
+			showControlView();
+		}
+	}
+
 	public void login(String email, String password) {
 		if (model.login(email, password)) {
 			if (model.verifyHWID()) {
 				if (model.isVIP()) {
-					this.controlView = new ControlView(this);
 					remove(landingView);
-					add(controlView);
+					showDownloadView();
 				} else {
 					landingView.setStatus("You are not a VIP.");
 				}
@@ -103,7 +128,6 @@ public class LauncherController extends JFrame implements ActionListener {
 		} else if (landingView != null) {
 			landingView.setStatus("Invalid email or password");
 		}
-		updateInterface();
 	}
 
 	public void register() {
