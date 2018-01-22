@@ -7,20 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19cd0964-fba5-41e5-b4f0-3682189836f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/AgentInitializationException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/AgentLoadException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/AttachNotSupportedException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/AttachOperationFailedException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/AttachPermission.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/VirtualMachine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/VirtualMachineDescriptor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sun/tools/attach/spi/AttachProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherController.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherModel.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,36 +23,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AttachProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sun/tools/attach/spi/AttachProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VirtualMachineDescriptor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/sun/tools/attach/VirtualMachineDescriptor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
-              <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1134#1135#0" expanded="true" />
-                <element signature="e#1170#1171#0" expanded="true" />
-                <element signature="e#1200#1201#0" expanded="true" />
-                <element signature="e#1230#1231#0" expanded="true" />
-                <element signature="e#1269#1270#0" expanded="true" />
-                <element signature="e#1308#1309#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AttachPermission.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sun/tools/attach/AttachPermission.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -148,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Loader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Loader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+            <state relative-caret-position="403">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,14 +119,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LauncherModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="334">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AttachAPI.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -218,7 +197,6 @@
         <option value="$PROJECT_DIR$/src/com/sun/tools/attacher/AgentInitializationException.java" />
         <option value="$PROJECT_DIR$/src/com/sun/tools/attacher/spi/AttachProvider.java" />
         <option value="$PROJECT_DIR$/out/production/OSBot Jailbreaker/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/utils/NetUtils.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/utils/FileDownloader.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LandingView.java" />
@@ -236,6 +214,7 @@
         <option value="$PROJECT_DIR$/src/com/sun/tools/attach/AgentInitializationException.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
+        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java" />
       </list>
     </option>
   </component>
@@ -732,7 +711,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -744,7 +723,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29242262" sideWeight="0.50417536" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28922093" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27854857" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -934,14 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/utils/NetUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -964,9 +935,9 @@
         <state relative-caret-position="-180">
           <caret line="33" column="17" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="33" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2371#2372#0" expanded="true" />
-            <element signature="e#2408#2409#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2371#2372#0" expanded="false" />
+            <element signature="e#2408#2409#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -987,22 +958,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1020,7 +981,7 @@
         <state relative-caret-position="581">
           <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1113,10 +1074,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="334">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1125,11 +1094,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+        <state relative-caret-position="403">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

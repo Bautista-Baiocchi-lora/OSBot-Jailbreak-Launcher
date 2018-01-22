@@ -3,18 +3,17 @@ package org.osbot.jailbreak.data;
 /**
  * Created by Ethan on 1/21/2018.
  */
+import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 
 public class AttachAPI {
 
-    private static boolean started;
-
-    static {
+    public static void ensureToolsJar() {
         try {
-            String javaHome = System.getProperty("java.home");
-            String toolsJarURL = "file:" + javaHome + "/../lib/tools.jar";
+            String javaHome = Constants.DIRECTORY_PATH+ File.separator+"environment.jar";
+            String toolsJarURL = "file:" + javaHome;
 
             // Make addURL public
             Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
@@ -31,12 +30,7 @@ public class AttachAPI {
             System.out.println("Java home points to " + System.getProperty("java.home") + " make sure it is not a JRE path");
             System.out.println("Failed to add tools.jar to classpath");
         }
-        started = true;
+
     }
 
-    public static void ensureToolsJar() {
-        if (!started) {
-            System.out.println("Attach API not initialized");
-        }
-    }
 }

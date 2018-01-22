@@ -32,15 +32,6 @@ public class LauncherModel {
 		return id;
 	}
 
-	public static void main(String[] args) {
-		//AttachAPI.ensureToolsJar();
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (IllegalAccessException | ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		new LauncherController().setVisible(true);
-	}
 
 	public boolean isVIP() {
 		final String VERIFY_VIP_URL = "http://botupgrade.us/private/check/paid.php?";
