@@ -103,7 +103,6 @@ public class LauncherController extends JFrame implements ActionListener {
 	private void showDownloadView() {
 		final File environmentJar = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
 		if (!environmentJar.exists()) {
-			System.out.println("download");
 			this.downloadView = new DownloadView(this, "http://botupgrade.us/private/tools.jar", "environment");
 			add(downloadView, BorderLayout.CENTER);
 			updateInterface();
