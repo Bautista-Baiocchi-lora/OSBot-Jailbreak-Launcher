@@ -1,5 +1,6 @@
 package org.osbot.jailbreak;
 
+import org.osbot.jailbreak.data.AttachAPI;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.ui.LauncherController;
 import org.osbot.jailbreak.utils.NetUtils;
@@ -8,6 +9,9 @@ import javax.swing.*;
 import java.io.File;
 
 public class Loader {
+	static {
+		AttachAPI.ensureToolsJar();
+	}
 
 	public static void main(String[] args) {
 		try {
@@ -31,5 +35,8 @@ public class Loader {
 		new LauncherController().setVisible(true);
 	}
 
+	public static void ensureToolsJar() {
+		// do nothing, just ensure call to static initializer
+	}
 }
 
