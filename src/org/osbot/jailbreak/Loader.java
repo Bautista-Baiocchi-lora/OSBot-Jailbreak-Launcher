@@ -1,17 +1,13 @@
 package org.osbot.jailbreak;
 
-import org.osbot.jailbreak.data.AttachAPI;
 import org.osbot.jailbreak.data.Constants;
-import org.osbot.jailbreak.ui.LauncherController;
+import org.osbot.jailbreak.ui.LauncherModel;
 import org.osbot.jailbreak.utils.NetUtils;
-
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Loader {
-	static {
-		AttachAPI.ensureToolsJar();
-	}
 
 	public static void main(String[] args) {
 		try {
@@ -23,16 +19,33 @@ public class Loader {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (IllegalAccessException | ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
 		File file = new File(Constants.DIRECTORY_PATH);
 		if (!file.exists()) {
 			file.mkdirs();
 		}
-		new LauncherController().setVisible(true);
+		try {
+			exec(LauncherModel.class);
+			System.exit(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static int exec(Class klass) throws IOException,
+			InterruptedException {
+		String javaHome = System.getProperty("java.home");
+		String javaBin = javaHome +
+				File.separator + "bin" +
+				File.separator + "java";
+		String classpath = System.getProperty("java.class.path");
+		String className = klass.getCanonicalName();
+
+		ProcessBuilder builder = new ProcessBuilder(
+				javaBin, "-cp", classpath, className);
+
+		Process process = builder.start();
+		process.waitFor();
+		return process.exitValue();
 	}
 
 }

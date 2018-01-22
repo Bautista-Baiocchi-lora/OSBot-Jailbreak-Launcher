@@ -3,9 +3,11 @@ package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
+import org.osbot.jailbreak.data.AttachAPI;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -28,6 +30,16 @@ public class LauncherModel {
 
 	public int getID() {
 		return id;
+	}
+
+	public static void main(String[] args) {
+		//AttachAPI.ensureToolsJar();
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (IllegalAccessException | ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		new LauncherController().setVisible(true);
 	}
 
 	public boolean isVIP() {
