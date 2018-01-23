@@ -3,11 +3,9 @@ package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
-import org.osbot.jailbreak.data.AttachAPI;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
