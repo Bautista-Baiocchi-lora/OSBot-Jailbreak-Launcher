@@ -158,6 +158,7 @@ public class LauncherController extends JFrame implements ActionListener {
         } else if (landingView != null) {
             landingView.setStatus("Invalid email or password");
         }
+        updateInterface();
     }
 
     public void register() {

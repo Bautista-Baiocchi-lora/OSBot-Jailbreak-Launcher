@@ -1,12 +1,9 @@
 package org.osbot.jailbreak.ui;
 
 
-import com.sun.tools.attach.VirtualMachine;
-import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
@@ -14,7 +11,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 public class LauncherModel {
 
@@ -97,44 +93,6 @@ public class LauncherModel {
     public void downloadJailbreak() throws IOException {
         if (!Constants.LOAD_LOCAL) {
             NetUtils.downloadJailbreak(jailbreakUrl);
-        }
-    }
-
-    public void startJailbreak() {
-
-        String jvmPid = null;
-        List<VirtualMachineDescriptor> jvms = VirtualMachine.list();
-        for (VirtualMachineDescriptor jvm : jvms) {
-            if (jvm.displayName().contains(Constants.APPLICATION_NAME)) {
-                System.out.println("Status: OSBot client found!");
-                jvmPid = jvm.id();
-                break;
-            }
-
-        }
-        if (jvmPid != null) {
-            System.out.println("Status: Preparing jailbreak...");
-            File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
-            if (agentFile.isFile()) {
-                String agentFileName = agentFile.getName();
-                String agentFileExtension = agentFileName.substring(agentFileName.lastIndexOf(".") + 1);
-                if (agentFileExtension.equalsIgnoreCase("jar")) {
-                    try {
-                        System.out.println("Status: Starting jailbreak...");
-                        VirtualMachine jvm = VirtualMachine.attach(jvmPid);
-                        StringBuilder agentParameters = new StringBuilder().append(id).append(":" + hwid).append(":HtEk6jyT6kAgpHc6VbRbj");
-                        jvm.loadAgent(agentFile.getAbsolutePath(), agentParameters.toString());
-                        jvm.detach();
-                        System.out.println("Status: Jailbreak started!");
-                    } catch (Exception exception) {
-                        controller.jailbreakFailed();
-                        throw new RuntimeException(exception);
-                    }
-                    System.exit(0);
-                }
-            }
-        } else {
-            controller.clientNotFound();
         }
     }
 
