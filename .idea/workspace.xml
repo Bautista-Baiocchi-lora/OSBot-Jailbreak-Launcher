@@ -7,35 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19cd0964-fba5-41e5-b4f0-3682189836f6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Jailbreak_Launcher_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Jailbreak_Launcher_jar.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/META-INF/MANIFEST.MF" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/AgentInitializationException.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/AgentLoadException.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/AttachNotSupportedException.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/AttachOperationFailedException.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/AttachPermission.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/VirtualMachine.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/VirtualMachineDescriptor.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/com/sun/tools/attach/spi/AttachProvider.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/data/AttachAPI.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LandingView.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LandingView.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherModel.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherModel.class" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/AgentInitializationException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/AgentLoadException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/AttachNotSupportedException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/AttachOperationFailedException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/AttachPermission.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/VirtualMachine.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/VirtualMachineDescriptor.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/com/sun/tools/attach/spi/AttachProvider.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/data/Constants.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/data/Constants.class" />
+      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java" />
       <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
-      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" />
-      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LandingView.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LandingView.java" />
-      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +31,8 @@
       <file leaf-file-name="Launcher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="160">
+              <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +53,8 @@
       <file leaf-file-name="Loader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="47" column="56" lean-forward="true" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
+            <state relative-caret-position="360">
+              <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,7 +65,7 @@
       <file leaf-file-name="NetUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/utils/NetUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="570">
               <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
@@ -116,10 +94,17 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>log</find>
+      <find>sa-</find>
+      <find>ant-ja</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -167,9 +152,9 @@
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/data/AttachAPI.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherController.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LandingView.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" />
+        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
       </list>
     </option>
@@ -223,27 +208,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="jailbreak" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="OSBot-Jailbreak-Launcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OSBot-Jailbreak-Launcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jailbreak" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OSBot-Jailbreak-Launcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OSBot-Jailbreak-Launcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jailbreak" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OSBot-Jailbreak-Launcher" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OSBot-Jailbreak-Launcher" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jailbreak" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -280,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Loader">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -288,7 +252,21 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
     </configuration>
-    <configuration name="Unnamed" type="Application" factoryName="Application">
+    <configuration name="Launcher" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="org.osbot.jailbreak.Launcher" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="OSBot Jailbreaker" />
+      <envs />
+    </configuration>
+    <configuration name="Loader" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="org.osbot.jailbreak.Loader" />
       <option name="VM_PARAMETERS" value="" />
@@ -493,6 +471,10 @@
       <envs />
       <method />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Launcher" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Loader" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -571,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516589611589</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Wont work">
+      <created>1516676404931</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1516676404931</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -622,7 +611,8 @@
     <MESSAGE value="Release ready" />
     <MESSAGE value="Tools.jar downloading done." />
     <MESSAGE value="Delete a comment." />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete a comment." />
+    <MESSAGE value="Wont work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wont work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -877,17 +867,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/utils/NetUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="570">
           <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
@@ -901,10 +883,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="160">
+          <caret line="12" column="66" lean-forward="false" selection-start-line="12" selection-start-column="66" selection-end-line="12" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -913,8 +903,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="47" column="56" lean-forward="true" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
+        <state relative-caret-position="360">
+          <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

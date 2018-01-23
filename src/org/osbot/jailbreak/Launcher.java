@@ -9,8 +9,8 @@ import java.io.File;
 
 public class Launcher {
 
-
 	public static void main(String[] args) {
+		System.out.println(System.getProperty("java.class.path"));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			final String VERSION = "1.0";

@@ -4,65 +4,35 @@ import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
 
 import javax.swing.*;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Loader {
 
-
-	/*
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/bin/java
-	-Dfile.encoding=UTF-8
-	-classpath
-	"/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/charsets.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/deploy.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/dnsns.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/jaccess.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/localedata.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/nashorn.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/sunec.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/ext/zipfs.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/javaws.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jce.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfr.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jfxswt.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/jsse.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/management-agent.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/plugin.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/resources.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/jre/lib/rt.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/ant-javafx.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/dt.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/javafx-mx.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/jconsole.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/packager.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/sa-jdi.jar:
-	/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/lib/tools.jar:
-	/Users/bautistabaiocchi-lora/Documents/IntelliJ Projects/OSBot-Jailbreak-Launcher/out/production/OSBot Jailbreaker" org.osbot.jailbreak.Loader
-	 */
-
-	private String OsSeperator, javaHome, executionPath;
-
+	private String OsSeperator, javaHome, extendedHome, javaExecute;
 
 	public Loader() {
-		javaHome = System.getProperty("java.home");
-		executionPath = getExecutionPath() + File.separator + Constants.JAILBREAK_LAUNCHER;
-		System.out.println(javaHome);
-		System.out.println(executionPath);
+		OsSeperator = System.getProperty("os.name").startsWith("Windows") ? ";" : ":";
+		if (OsSeperator.equals(":")) {
+			javaHome = "/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/";
+			extendedHome = javaHome + File.separator + "jre";
+		} else {
+			javaHome = System.getProperty("java.home").replace(File.separator + "jre", "");
+			extendedHome = System.getProperty("java.home");
+		}
+		javaExecute = javaHome + File.separator + "bin" + File.separator + "java";
 		if (javaHome.contains("jdk")) {
-			OsSeperator = System.getProperty("os.name").startsWith("Windows") ? ";" : ":";
-			System.out.println(OsSeperator);
-			ProcessBuilder processBuilder = new ProcessBuilder();
-			processBuilder.command("/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/bin/java");
-			processBuilder.command("-classpath");
-			processBuilder.command(getCommandLineArgument());
-			processBuilder.command("org.osbot.jailbreak.Launcher");
+			ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
 			try {
 				Process process = processBuilder.start();
+				try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+					String line;
+					while ((line = reader.readLine()) != null) {
+						System.out.println(line);
+					}
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -74,9 +44,10 @@ public class Loader {
 
 	public String getCommandLineArgument() {
 		StringBuilder argument = new StringBuilder();
-		argument.append("\"" + javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
-		argument.append(javaHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
-		argument.append(executionPath + "\"");
+		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
+		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
+		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
+		argument.append(getExecutionPath() + File.separator + "Jailbreak_Launcher.jar");
 		return argument.toString();
 	}
 
