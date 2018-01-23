@@ -61,11 +61,8 @@ public class Loader {
 			for (File javaType : baseJavaDirectory.listFiles()) {
 				if (javaType.isDirectory() && javaType.getName().contains("jdk")) {
 					javaHome = javaType.getAbsolutePath() + "/Contents/Home/";
-					System.out.println(javaHome);
 					extendedHome = javaHome + "jre";
-					System.out.println(extendedHome);
 					javaExecute = javaHome + "bin" + File.separator + "java";
-					System.out.println(javaExecute);
 					break;
 				}
 			}
