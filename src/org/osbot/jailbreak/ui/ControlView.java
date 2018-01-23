@@ -9,28 +9,28 @@ import java.awt.event.ActionListener;
 
 public class ControlView extends JPanel implements ActionListener {
 
-	private final LauncherController controller;
-	private final JButton jailbreak;
-	private final JLabel status;
+    private final LauncherController controller;
+    private final JButton jailbreak;
+    private final JLabel status;
 
-	public ControlView(LauncherController controller) {
-		this.controller = controller;
-		this.setLayout(new BorderLayout());
-		this.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2), "Launcher"));
+    public ControlView(LauncherController controller) {
+        this.controller = controller;
+        this.setLayout(new BorderLayout());
+        this.setBorder(new TitledBorder(new LineBorder(Color.BLACK, 2), "Launcher"));
 
-		this.status = new JLabel("<html>Status: <font color='green'>Ready</font></html>");
-		add(status, BorderLayout.CENTER);
+        this.status = new JLabel("<html>Status: <font color='green'>Ready</font></html>");
+        add(status, BorderLayout.CENTER);
 
-		this.jailbreak = new JButton("Jailbreak");
-		this.jailbreak.addActionListener(this);
-		this.jailbreak.setActionCommand("jailbreak");
-		add(jailbreak, BorderLayout.SOUTH);
+        this.jailbreak = new JButton("Jailbreak");
+        this.jailbreak.addActionListener(this);
+        this.jailbreak.setActionCommand("jailbreak");
+        add(jailbreak, BorderLayout.SOUTH);
 
-		setPreferredSize(new Dimension(300, 90));
-	}
+        setPreferredSize(new Dimension(300, 90));
+    }
 
-	@Override
-	public void actionPerformed(final ActionEvent e) {
-		controller.jailbreak();
-	}
+    @Override
+    public void actionPerformed(final ActionEvent e) {
+        controller.jailbreak();
+    }
 }
