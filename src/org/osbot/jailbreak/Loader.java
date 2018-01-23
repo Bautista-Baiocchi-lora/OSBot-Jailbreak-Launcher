@@ -81,7 +81,12 @@ public class Loader {
         for (File file : files) {
             if (file.isDirectory()) {
                 if(file.getName().contains("jdk")) {
-                    windowsJDKPath = file.getAbsolutePath();
+                    javaHome = file.getAbsolutePath();
+                    System.out.println(file.getAbsolutePath());
+                    extendedHome = file.getAbsolutePath()+File.separator+"jre";
+                    System.out.println(extendedHome);
+                    javaExecute = file.getAbsolutePath()+File.separator+"bin"+File.separator+"java";
+                    System.out.println(javaExecute);
                     return true;
                 }
             }
@@ -92,8 +97,8 @@ public class Loader {
 
     public String getCommandLineArgument() {
         StringBuilder argument = new StringBuilder();
-        argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
-        argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
+        //argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
+        //argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
         argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
         argument.append(getExecutionPath() + File.separator + "Jailbreak_Launcher.jar");
         return argument.toString();
