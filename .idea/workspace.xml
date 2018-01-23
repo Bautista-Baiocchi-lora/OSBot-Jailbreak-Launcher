@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="19cd0964-fba5-41e5-b4f0-3682189836f6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" />
+      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,8 +48,8 @@
       <file leaf-file-name="Loader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="48" column="96" lean-forward="true" selection-start-line="48" selection-start-column="96" selection-end-line="48" selection-end-column="96" />
+            <state relative-caret-position="347">
+              <caret line="39" column="123" lean-forward="false" selection-start-line="39" selection-start-column="123" selection-end-line="39" selection-end-column="123" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -569,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516737655381</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Switch to not load local.">
+      <created>1516738305843</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1516738305843</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -622,7 +629,8 @@
     <MESSAGE value="Delete a comment." />
     <MESSAGE value="Wont work" />
     <MESSAGE value="It fucking works." />
-    <option name="LAST_COMMIT_MESSAGE" value="It fucking works." />
+    <MESSAGE value="Switch to not load local." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switch to not load local." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -913,8 +921,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="48" column="96" lean-forward="true" selection-start-line="48" selection-start-column="96" selection-end-line="48" selection-end-column="96" />
+        <state relative-caret-position="347">
+          <caret line="39" column="123" lean-forward="false" selection-start-line="39" selection-start-column="123" selection-end-line="39" selection-end-column="123" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

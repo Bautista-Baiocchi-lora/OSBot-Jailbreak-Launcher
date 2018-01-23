@@ -37,7 +37,7 @@ public class Loader {
 				e.printStackTrace();
 			}
 		} else {
-			JOptionPane.showConfirmDialog(null, "No java JDK found. Please see forums for how to fix.", "No JDK found!", JOptionPane.DEFAULT_OPTION);
+			JOptionPane.showConfirmDialog(null, "No java JDK found. Please see forums for how to fix.", "Java JDK Required!", JOptionPane.DEFAULT_OPTION);
 			System.exit(0);
 		}
 	}
@@ -54,7 +54,7 @@ public class Loader {
 	private String getExecutionPath() {
 		String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 		absolutePath = absolutePath.substring(0, absolutePath.lastIndexOf("/"));
-		absolutePath = absolutePath.replaceAll("%20", " "); // Surely need to do this here
+		absolutePath = absolutePath.replaceAll("%20", " ");
 		return absolutePath;
 	}
 
