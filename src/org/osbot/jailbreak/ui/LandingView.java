@@ -30,7 +30,7 @@ public class LandingView extends JPanel implements ActionListener {
 		emailLayout.add(new JLabel("Email: "));
 		this.email = new JTextField(20);
 		this.email.setToolTipText("Email");
-		this.email.setText("gaucho.botupgrade@gmail.com");
+		this.email.setText("");
 		emailLayout.add(email);
 		fieldsLayout.add(emailLayout);
 
@@ -38,7 +38,7 @@ public class LandingView extends JPanel implements ActionListener {
 		passwordLayout.add(new JLabel("Password: "));
 		this.password = new JPasswordField(20);
 		this.password.setToolTipText("Password");
-		this.password.setText("F6K9NdLJrfr9");
+		this.password.setText("");
 		passwordLayout.add(password);
 		fieldsLayout.add(passwordLayout);
 

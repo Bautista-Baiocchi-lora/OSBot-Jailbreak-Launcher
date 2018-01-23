@@ -16,11 +16,21 @@ public class Loader {
 	public Loader() {
 		OsSeperator = System.getProperty("os.name").startsWith("Windows") ? ";" : ":";
 		if (OsSeperator.equals(":")) {
-			javaHome = "/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home/";
-			extendedHome = javaHome + File.separator + "jre";
+			File baseJavaDirectory = new File("/Library/Java/JavaVirtualMachines/");
+			for (File javaType : baseJavaDirectory.listFiles()) {
+				if (javaType.isDirectory() && javaType.getName().contains("jdk")) {
+					javaHome = javaType.getAbsolutePath() + "/Contents/Home/";
+					extendedHome = javaHome + "jre";
+				}
+			}
 		} else {
-			javaHome = System.getProperty("java.home").replace(File.separator + "jre", "");
-			extendedHome = System.getProperty("java.home");
+			File baseJavaDirectory = new File("C:Program Files" + File.separator + "Java" + File.separator);
+			for (File javaType : baseJavaDirectory.listFiles()) {
+				if (javaType.isDirectory() && javaType.getName().contains("jdk")) {
+					javaHome = javaType.getAbsolutePath();
+					extendedHome = javaHome + File.separator + "jre";
+				}
+			}
 		}
 		javaExecute = javaHome + File.separator + "bin" + File.separator + "java";
 		if (javaHome.contains("jdk")) {
