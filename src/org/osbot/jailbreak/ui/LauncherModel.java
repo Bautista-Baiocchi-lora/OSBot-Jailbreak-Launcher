@@ -4,12 +4,12 @@ package org.osbot.jailbreak.ui;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.osbot.jailbreak.data.Constants;
+import org.osbot.jailbreak.utils.Account;
 import org.osbot.jailbreak.utils.NetUtils;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -75,6 +75,28 @@ public class LauncherModel {
 			}
 		}
 		return false;
+	}
+
+	public void saveAccount(Account account) {
+		try {
+			final ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE));
+			objectOutputStream.writeObject(account);
+			objectOutputStream.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Account getSavedAccount() {
+		try {
+			final ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE));
+			return (Account) objectInputStream.readObject();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public HashMap<String, VirtualMachineDescriptor> getJVMs() {

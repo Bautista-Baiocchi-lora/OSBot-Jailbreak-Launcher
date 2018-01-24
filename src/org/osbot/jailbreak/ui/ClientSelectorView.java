@@ -31,7 +31,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 		this.jvmsModel = new DefaultListModel<>();
 		refreshList();
 		this.jvms = new JList<>(jvmsModel);
-		this.jvms.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		this.jvms.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.jvms.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(final ListSelectionEvent e) {

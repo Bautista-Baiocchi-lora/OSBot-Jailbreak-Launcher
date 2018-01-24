@@ -2,6 +2,7 @@ package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.osbot.jailbreak.data.Constants;
+import org.osbot.jailbreak.utils.Account;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +53,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		this.authors = new JLabel("Developed by: Mate & Ethan");
 		add(authors, BorderLayout.NORTH);
 
-		this.landingView = new LandingView(this);
+		this.landingView = new LandingView(this, model.getSavedAccount());
 		add(landingView, BorderLayout.CENTER);
 
 		this.setResizable(false);
@@ -134,6 +135,10 @@ public class LauncherController extends JFrame implements ActionListener {
 		} else {
 			showControlView();
 		}
+	}
+
+	public void rememberAccount(Account account) {
+		model.saveAccount(account);
 	}
 
 	public void jailbreak(List<String> jvms) {
