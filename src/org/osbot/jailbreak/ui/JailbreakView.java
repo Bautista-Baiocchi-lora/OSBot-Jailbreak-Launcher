@@ -54,7 +54,7 @@ public class JailbreakView extends JPanel {
 					setProgress(45);
 				}
 			}
-			int interval = 55 / (jvmPid.size() * 3);
+			int interval = 55 / (jvmPid.size() * 2);
 			for (String pid : jvmPid) {
 				jailbreak(pid, interval);
 			}
