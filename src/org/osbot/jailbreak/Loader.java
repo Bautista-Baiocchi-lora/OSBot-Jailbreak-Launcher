@@ -19,7 +19,7 @@ public class Loader {
 			String[] toolsJar = new File(javaHome + File.separator + "lib").list(new FilenameFilter() {
 				@Override
 				public boolean accept(final File dir, final String name) {
-					return name.equalsIgnoreCase("tools.jar");
+					return dir.isDirectory() && name.equalsIgnoreCase("tools.jar");
 				}
 			});
 			if (toolsJar != null && toolsJar.length > 0) {
@@ -91,9 +91,7 @@ public class Loader {
 			}
 			javaHome = getNewestJDK(jdkPaths);
 			extendedHome = javaHome + File.separator + "jre";
-			System.out.println("Extended: "+extendedHome);
 			javaExecute = javaHome + File.separator + "bin" + File.separator + "java";
-			System.out.println("Execute: "+javaExecute);
 		}
 	}
 

@@ -3,7 +3,6 @@
     <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="Jailbreak_Launcher.jar">
       <element id="module-output" name="OSBot Jailbreaker" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java Libraries/commons-codec-1.10/commons-codec-1.10.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

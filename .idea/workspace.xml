@@ -7,10 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19cd0964-fba5-41e5-b4f0-3682189836f6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Jailbreak_Launcher_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Jailbreak_Launcher_jar.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader$1.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader$2.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader$2.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/ClientSelectorView$1.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/ClientSelectorView$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/ClientSelectorView.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/ClientSelectorView.class" />
-      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/JailbreakView$Jailbreak.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/JailbreakView$Jailbreak.class" />
+      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
       <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClientSelectorView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientSelectorView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="37" column="47" lean-forward="true" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+            <state relative-caret-position="366">
+              <caret line="52" column="46" lean-forward="false" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -44,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="290">
-              <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+              <caret line="140" column="39" lean-forward="false" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,8 +60,30 @@
       <file leaf-file-name="JailbreakView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="67" column="86" lean-forward="false" selection-start-line="67" selection-start-column="86" selection-end-line="67" selection-end-column="86" />
+            <state relative-caret-position="734">
+              <caret line="67" column="111" lean-forward="false" selection-start-line="67" selection-start-column="111" selection-end-line="67" selection-end-column="111" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Loader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="47" lean-forward="false" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -137,10 +164,10 @@
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherModel.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherController.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java" />
+        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
         <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" />
-        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java" />
-        <option value="$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java" />
       </list>
     </option>
   </component>
@@ -217,7 +244,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.16503906" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
@@ -645,7 +672,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516769387461</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Allow multiple client list selection.&#10;Disable jailbreak button if no selection made.">
+      <created>1516808929107</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1516808929107</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -654,7 +688,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -710,7 +744,8 @@
     <MESSAGE value="Improved Selector ui." />
     <MESSAGE value="final selector ui" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Allow multiple client list selection.&#10;Disable jailbreak button if no selection made." />
+    <option name="LAST_COMMIT_MESSAGE" value="Allow multiple client list selection.&#10;Disable jailbreak button if no selection made." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -885,26 +920,8 @@
         <state relative-caret-position="180">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="27" column="25" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="47" lean-forward="false" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,25 +936,43 @@
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/LauncherController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
-          <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+          <caret line="140" column="39" lean-forward="false" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java">
+    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="67" column="86" lean-forward="false" selection-start-line="67" selection-start-column="86" selection-end-line="67" selection-end-column="86" />
+        <state relative-caret-position="366">
+          <caret line="52" column="46" lean-forward="false" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/ClientSelectorView.java">
+    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/ui/JailbreakView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="37" column="47" lean-forward="true" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+        <state relative-caret-position="734">
+          <caret line="67" column="111" lean-forward="false" selection-start-line="67" selection-start-column="111" selection-end-line="67" selection-end-column="111" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="47" lean-forward="false" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -1001,7 +1036,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
