@@ -8,13 +8,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Loader {
 
 	private String OsSeperator, javaHome, extendedHome, javaExecute;
 
 	public Loader() {
-		setPaths();
+		configurePaths();
 		if (javaHome.contains("jdk")) {
 			ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
 			try {
@@ -38,7 +41,7 @@ public class Loader {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			if (!Constants.LOAD_LOCAL) {
-				final String VERSION = "1.0.1";
+				final String VERSION = "1.0";
 				if (!NetUtils.getResponse("http://botupgrade.us/private/launcher/launcher_version.txt").equals(VERSION)) {
 					JOptionPane.showConfirmDialog(null, "Launcher out dated! Please download newest version from botupgrade.us/forums/!", "Update Required!", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
@@ -54,18 +57,19 @@ public class Loader {
 		new Loader();
 	}
 
-	public void setPaths() {
+	public void configurePaths() {
 		OsSeperator = System.getProperty("os.name").startsWith("Windows") ? ";" : ":";
+		List<String> jdkPaths = new ArrayList<>();
 		if (OsSeperator.equals(":")) {
 			File baseJavaDirectory = new File("/Library/Java/JavaVirtualMachines/");
 			for (File javaType : baseJavaDirectory.listFiles()) {
 				if (javaType.isDirectory() && javaType.getName().contains("jdk")) {
-					javaHome = javaType.getAbsolutePath() + "/Contents/Home/";
-					extendedHome = javaHome + "jre";
-					javaExecute = javaHome + "bin" + File.separator + "java";
-					break;
+					jdkPaths.add(javaType.getAbsolutePath());
 				}
 			}
+			javaHome = getNewestJDK(jdkPaths) + "/Contents/Home/";
+			extendedHome = javaHome + "jre";
+			javaExecute = javaHome + "bin" + File.separator + "java";
 		} else {
 			File[] files86 = new File("C:/Program Files (x86)/java").listFiles();
 			File[] non86Files = new File("C:/Program Files/java").listFiles();
@@ -73,17 +77,32 @@ public class Loader {
 			System.arraycopy(files86, 0, combinedFiles, 0, files86.length);
 			System.arraycopy(non86Files, 0, combinedFiles, files86.length, non86Files.length);
 			for (File file : combinedFiles) {
-				if (file.isDirectory()) {
-					if (file.getName().contains("jdk")) {
-						javaHome = file.getAbsolutePath();
-						extendedHome = file.getAbsolutePath() + File.separator + "jre";
-						javaExecute = file.getAbsolutePath() + File.separator + "bin" + File.separator + "java";
-						System.out.println("JDK found.");
-						break;
-					}
+				if (file.isDirectory() && file.getName().contains("jdk")) {
+					jdkPaths.add(file.getAbsolutePath());
 				}
 			}
+			javaHome = getNewestJDK(jdkPaths);
+			extendedHome = javaHome + "jre";
+			javaExecute = javaHome + "bin" + File.separator + "java";
 		}
+	}
+
+	private String getNewestJDK(List<String> jdkPaths) {
+		return jdkPaths.stream().sorted(new Comparator<String>() {
+			@Override
+			public int compare(final String o1, final String o2) {
+				String o1Version = o1.split("jdk")[1].replace("_", ".");
+				String o2Version = o2.split("jdk")[1].replace("_", ".");
+				for (int i = 0; i < o1Version.split("\\.").length; i++) {
+					int o1Number = Integer.parseInt(o1Version.split("\\.")[i]);
+					int o2Number = Integer.parseInt(o2Version.split("\\.")[i]);
+					if (o1Number != o2Number) {
+						return o2Number - o1Number;
+					}
+				}
+				return 0;
+			}
+		}).findFirst().orElse("");
 	}
 
 
@@ -92,7 +111,8 @@ public class Loader {
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
 		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
-		argument.append(getExecutionPath() + File.separator + getJarName());
+		argument.append(getExecutionPath() + File.separator + (Constants.LOAD_LOCAL ? "" : getJarName()));
+		System.out.println(getExecutionPath());
 		return argument.toString();
 	}
 
