@@ -40,8 +40,8 @@ public class Loader {
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			if (!Constants.LOAD_LOCAL) {
-				final String VERSION = "1.0";
+			if (!Constants.LOAD_LOCAL_JAILBREAK) {
+				final String VERSION = "1.0.1";
 				if (!NetUtils.getResponse("http://botupgrade.us/private/launcher/launcher_version.txt").equals(VERSION)) {
 					JOptionPane.showConfirmDialog(null, "Launcher out dated! Please download newest version from botupgrade.us/forums/!", "Update Required!", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
@@ -111,7 +111,7 @@ public class Loader {
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
 		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
-		argument.append(getExecutionPath() + File.separator + (Constants.LOAD_LOCAL ? "" : getJarName()));
+		argument.append(getExecutionPath() + File.separator + (Constants.RUN_THROUGH_IDE ? "" : getJarName()));
 		System.out.println(getExecutionPath());
 		return argument.toString();
 	}

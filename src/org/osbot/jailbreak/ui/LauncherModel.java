@@ -102,7 +102,7 @@ public class LauncherModel {
 	}
 
 	public void downloadJailbreak() throws IOException {
-		if (!Constants.LOAD_LOCAL) {
+		if (!Constants.LOAD_LOCAL_JAILBREAK) {
 			NetUtils.downloadJailbreak(jailbreakUrl);
 		}
 	}
