@@ -15,7 +15,7 @@ public class Loader {
 
 	public Loader() {
 		setPaths();
-		System.out.println(Launcher.class.toGenericString());
+		System.out.println(Launcher.class.toGenericString().replace('/', '.').replaceAll("public class", "").trim());
 		if (javaHome.contains("jdk")) {
 			ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
 			try {

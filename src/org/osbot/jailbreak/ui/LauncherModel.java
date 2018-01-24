@@ -63,7 +63,6 @@ public class LauncherModel {
         }
         if (response != null) {
             if (response.contains("true")) {
-                System.out.println(response.toString());
                 jailbreakUrl = response.toString().trim().split(" ")[1];
                 return true;
             }

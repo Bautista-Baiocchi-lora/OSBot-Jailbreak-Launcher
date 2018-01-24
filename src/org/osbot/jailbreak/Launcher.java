@@ -24,6 +24,7 @@ public class Launcher {
         if (!file.exists()) {
             file.mkdirs();
         }
+        System.out.println("Starting UI");
         new LauncherController().setVisible(true);
     }
 
