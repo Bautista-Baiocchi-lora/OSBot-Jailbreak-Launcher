@@ -6,6 +6,13 @@ import javax.swing.*;
 
 public class Launcher {
 
+	/*
+	Put the script selector into launcher (different tabs for different client support all at once.)
+	Agent will take script name
+	downloads script
+	auto runs it?
+	 */
+
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

@@ -82,7 +82,7 @@ public class LandingView extends JPanel implements ActionListener {
 		switch (e.getActionCommand()) {
 			case "log in":
 				if (rememberMe.isSelected()) {
-					controller.rememberAccount(new Account(email.getText(), password.getPassword().toString()));
+					controller.rememberAccount(new Account(email.getText(), String.valueOf(password.getPassword())));
 				}
 				controller.login(email.getText(), new String(password.getPassword()));
 				break;

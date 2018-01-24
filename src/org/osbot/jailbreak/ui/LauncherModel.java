@@ -7,12 +7,15 @@ import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
 import org.osbot.jailbreak.utils.NetUtils;
 
+import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -77,24 +80,38 @@ public class LauncherModel {
 		return false;
 	}
 
+	private final Cipher getEncryptionCipher(int mode) throws NoSuchPaddingException, NoSuchAlgorithmException, UnsupportedEncodingException, InvalidKeyException {
+		final Cipher cipher = Cipher.getInstance(Constants.SYMMETRIC_TRANSFORMATION);
+		cipher.init(mode, new SecretKeySpec(getHWID().substring(0, 16).getBytes("UTF-8"), Constants.SYMMETRIC_ALGORITHM));
+		return cipher;
+	}
+
 	public void saveAccount(Account account) {
 		try {
-			final ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE));
-			objectOutputStream.writeObject(account);
+			final Cipher encryptionCipher = getEncryptionCipher(Cipher.ENCRYPT_MODE);
+			final SealedObject encryptedAccount = new SealedObject(account, encryptionCipher);
+			final CipherOutputStream encryptionOutputStream = new CipherOutputStream(new FileOutputStream(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE), encryptionCipher);
+			final ObjectOutputStream objectOutputStream = new ObjectOutputStream(encryptionOutputStream);
+			objectOutputStream.writeObject(encryptedAccount);
 			objectOutputStream.close();
-		} catch (IOException e) {
+		} catch (IOException | IllegalBlockSizeException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public Account getSavedAccount() {
-		try {
-			final ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE));
-			return (Account) objectInputStream.readObject();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+		File accountFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE);
+		if (accountFile.exists()) {
+			try {
+				final Cipher encryptionCipher = getEncryptionCipher(Cipher.DECRYPT_MODE);
+				final CipherInputStream encryptionInputStream = new CipherInputStream(new FileInputStream(accountFile), encryptionCipher);
+				final ObjectInputStream objectInputStream = new ObjectInputStream(encryptionInputStream);
+				final SealedObject encryptedAccount = (SealedObject) objectInputStream.readObject();
+				objectInputStream.close();
+				return (Account) encryptedAccount.getObject(encryptionCipher);
+			} catch (IOException | InvalidKeyException | ClassNotFoundException | NoSuchPaddingException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException e) {
+				e.printStackTrace();
+			}
 		}
 		return null;
 	}
@@ -137,7 +154,7 @@ public class LauncherModel {
 			}
 			i++;
 		}
-		return s;
+		return s.trim();
 	}
 
 	public void downloadJailbreak() throws IOException {
