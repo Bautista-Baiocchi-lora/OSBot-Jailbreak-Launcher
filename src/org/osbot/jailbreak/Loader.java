@@ -15,7 +15,6 @@ public class Loader {
 
 	public Loader() {
 		setPaths();
-		System.out.println(Launcher.class.toGenericString().replace('/', '.').replaceAll("public class", "").trim());
 		if (javaHome.contains("jdk")) {
 			ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
 			try {
@@ -39,7 +38,7 @@ public class Loader {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			if (!Constants.LOAD_LOCAL) {
-				final String VERSION = "1.0";
+				final String VERSION = "1.0.1";
 				if (!NetUtils.getResponse("http://botupgrade.us/private/launcher/launcher_version.txt").equals(VERSION)) {
 					JOptionPane.showConfirmDialog(null, "Launcher out dated! Please download newest version from botupgrade.us/forums/!", "Update Required!", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
@@ -79,7 +78,7 @@ public class Loader {
 						javaHome = file.getAbsolutePath();
 						extendedHome = file.getAbsolutePath() + File.separator + "jre";
 						javaExecute = file.getAbsolutePath() + File.separator + "bin" + File.separator + "java";
-						System.out.println("We found JDK");
+						System.out.println("JDK found.");
 						break;
 					}
 				}
@@ -93,8 +92,7 @@ public class Loader {
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
 		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
-		argument.append(getExecutionPath() + (File.separator + "Jailbreak_Launcher.jar"));
-		System.out.println("ARGS: "+argument.toString());
+		argument.append(getExecutionPath() + File.separator + getJarName());
 		return argument.toString();
 	}
 
@@ -102,7 +100,10 @@ public class Loader {
 		String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 		absolutePath = absolutePath.substring(0, absolutePath.lastIndexOf("/"));
 		absolutePath = absolutePath.replaceAll("%20", " ");
-		System.out.println("ABS PATH: "+absolutePath);
 		return absolutePath;
+	}
+
+	private String getJarName() {
+		return new java.io.File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()).getName();
 	}
 }
