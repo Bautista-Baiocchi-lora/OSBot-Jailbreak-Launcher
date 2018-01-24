@@ -4,10 +4,7 @@ import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -19,17 +16,28 @@ public class Loader {
 	public Loader() {
 		configurePaths();
 		if (javaHome.contains("jdk")) {
-			ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
-			try {
-				Process process = processBuilder.start();
-				try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
-					String line;
-					while ((line = reader.readLine()) != null) {
-						System.out.println(line);
-					}
+			String[] toolsJar = new File(javaHome + File.separator + "lib").list(new FilenameFilter() {
+				@Override
+				public boolean accept(final File dir, final String name) {
+					return name.equalsIgnoreCase("tools.jar");
 				}
-			} catch (IOException e) {
-				e.printStackTrace();
+			});
+			if (toolsJar != null && toolsJar.length > 0) {
+				ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
+				try {
+					Process process = processBuilder.start();
+					try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+						String line;
+						while ((line = reader.readLine()) != null) {
+							System.out.println(line);
+						}
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else {
+				JOptionPane.showConfirmDialog(null, "Your JDK is corrupted. Please re-install it.", "Corrupted JDK!", JOptionPane.DEFAULT_OPTION);
+				System.exit(0);
 			}
 		} else {
 			JOptionPane.showConfirmDialog(null, "No java JDK found. Please see forums for how to fix.", "Java JDK Required!", JOptionPane.DEFAULT_OPTION);
@@ -112,7 +120,6 @@ public class Loader {
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
 		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
 		argument.append(getExecutionPath() + File.separator + (Constants.RUN_THROUGH_IDE ? "" : getJarName()));
-		System.out.println(getExecutionPath());
 		return argument.toString();
 	}
 
