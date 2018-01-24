@@ -8,8 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="19cd0964-fba5-41e5-b4f0-3682189836f6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/Loader.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/data/Constants.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/data/Constants.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherModel.class" afterPath="$PROJECT_DIR$/out/production/OSBot Jailbreaker/org/osbot/jailbreak/ui/LauncherModel.class" />
       <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java" />
-      <change beforePath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" afterPath="$PROJECT_DIR$/src/org/osbot/jailbreak/data/Constants.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +44,8 @@
       <file leaf-file-name="Loader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="57" lean-forward="true" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+            <state relative-caret-position="-699">
+              <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#571#572#0" expanded="true" />
@@ -631,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516764814378</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="check if jdk is corrupted">
+      <created>1516765264214</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1516765264214</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -646,7 +655,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29242262" sideWeight="0.50417536" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27811366" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27811366" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -711,7 +720,8 @@
     <MESSAGE value="Added dynamic jar name finding.&#10;Load local should also be fixed in loader.&#10;Removed some console print outs." />
     <MESSAGE value="Picks newest jdk now." />
     <MESSAGE value="Dev mode added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dev mode added" />
+    <MESSAGE value="check if jdk is corrupted" />
+    <option name="LAST_COMMIT_MESSAGE" value="check if jdk is corrupted" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -938,8 +948,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/osbot/jailbreak/Loader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="57" lean-forward="true" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+        <state relative-caret-position="-699">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#571#572#0" expanded="true" />

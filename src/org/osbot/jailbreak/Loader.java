@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Loader {
 
-	private String OsSeperator, javaHome, extendedHome, javaExecute;
+	private String OsSeparator, javaHome, extendedHome, javaExecute;
 
 	public Loader() {
 		configurePaths();
@@ -66,9 +66,9 @@ public class Loader {
 	}
 
 	public void configurePaths() {
-		OsSeperator = System.getProperty("os.name").startsWith("Windows") ? ";" : ":";
+		OsSeparator = System.getProperty("os.name").startsWith("Windows") ? ";" : ":";
 		List<String> jdkPaths = new ArrayList<>();
-		if (OsSeperator.equals(":")) {
+		if (OsSeparator.equals(":")) {
 			File baseJavaDirectory = new File("/Library/Java/JavaVirtualMachines/");
 			for (File javaType : baseJavaDirectory.listFiles()) {
 				if (javaType.isDirectory() && javaType.getName().contains("jdk")) {
@@ -116,9 +116,9 @@ public class Loader {
 
 	public String getCommandLineArgument() {
 		StringBuilder argument = new StringBuilder();
-		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
-		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
-		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
+		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeparator);
+		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeparator);
+		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeparator);
 		argument.append(getExecutionPath() + File.separator + (Constants.RUN_THROUGH_IDE ? "" : getJarName()));
 		return argument.toString();
 	}
