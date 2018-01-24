@@ -8,15 +8,16 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.List;
 
 public class JailbreakView extends JPanel {
 
 	private final JProgressBar progressBar;
 	private final LauncherController controller;
 	private final Jailbreak jailbreak;
-	private final String jvmPid;
+	private final java.util.List<String> jvmPid;
 
-	public JailbreakView(LauncherController controller, String pid) {
+	public JailbreakView(LauncherController controller, List<String> pid) {
 		this.controller = controller;
 		this.jvmPid = pid;
 		this.progressBar = new JProgressBar(0, 100);
@@ -53,6 +54,14 @@ public class JailbreakView extends JPanel {
 					setProgress(65);
 				}
 			}
+			int interval = 30 / jvmPid.size();
+			for (String pid : jvmPid) {
+				jailbreak(pid, interval);
+			}
+			return null;
+		}
+
+		private void jailbreak(String jvmPid, int sleep) {
 			if (jvmPid != null) {
 				System.out.println("Status: Preparing jailbreak...");
 				File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
@@ -63,11 +72,11 @@ public class JailbreakView extends JPanel {
 						try {
 							System.out.println("Status: Starting jailbreak...");
 							VirtualMachine jvm = VirtualMachine.attach(jvmPid);
-							setProgress(85);
+							setProgress(sleep);
 							StringBuilder agentParameters = new StringBuilder().append(controller.getId()).append(":" + controller.getHWID()).append(":HtEk6jyT6kAgpHc6VbRbj");
 							jvm.loadAgent(agentFile.getAbsolutePath(), agentParameters.toString());
 							jvm.detach();
-							setProgress(100);
+							setProgress(sleep);
 							System.out.println("Status: Jailbreak started!");
 						} catch (Exception exception) {
 							controller.jailbreakFailed();
@@ -79,7 +88,6 @@ public class JailbreakView extends JPanel {
 			} else {
 				controller.clientNotFound();
 			}
-			return null;
 		}
 
 	}
