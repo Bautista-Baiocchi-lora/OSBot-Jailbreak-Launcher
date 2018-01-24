@@ -15,6 +15,7 @@ public class Loader {
 
 	public Loader() {
 		setPaths();
+		System.out.println(Launcher.class.toGenericString());
 		if (javaHome.contains("jdk")) {
 			ProcessBuilder processBuilder = new ProcessBuilder(javaExecute, "-cp", getCommandLineArgument(), "org.osbot.jailbreak.Launcher");
 			try {
@@ -78,6 +79,7 @@ public class Loader {
 						javaHome = file.getAbsolutePath();
 						extendedHome = file.getAbsolutePath() + File.separator + "jre";
 						javaExecute = file.getAbsolutePath() + File.separator + "bin" + File.separator + "java";
+						System.out.println("We found JDK");
 						break;
 					}
 				}
@@ -91,7 +93,8 @@ public class Loader {
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "ext" + File.separator + "*" + OsSeperator);
 		argument.append(extendedHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
 		argument.append(javaHome + File.separator + "lib" + File.separator + "*" + OsSeperator);
-		argument.append(getExecutionPath() + (Constants.LOAD_LOCAL ? "" : File.separator + "Jailbreak_Launcher.jar"));
+		argument.append(getExecutionPath() + (File.separator + "Jailbreak_Launcher.jar"));
+		System.out.println("ARGS: "+argument.toString());
 		return argument.toString();
 	}
 
@@ -99,6 +102,7 @@ public class Loader {
 		String absolutePath = getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
 		absolutePath = absolutePath.substring(0, absolutePath.lastIndexOf("/"));
 		absolutePath = absolutePath.replaceAll("%20", " ");
+		System.out.println("ABS PATH: "+absolutePath);
 		return absolutePath;
 	}
 }

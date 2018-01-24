@@ -4,6 +4,7 @@ import org.osbot.jailbreak.data.Constants;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -101,15 +102,21 @@ public class LauncherController extends JFrame implements ActionListener {
         showDialog("Error!", "Jailbreak failed to load.");
         System.exit(0);
     }
-
-    public void showHWID() {
+    public void copyHWID() {
         try {
-            showDialog("Unique ID", "Your Unique ID: " + model.getHWID());
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
+            Toolkit.getDefaultToolkit()
+                    .getSystemClipboard()
+                    .setContents(
+                            new StringSelection(model.getHWID()),
+                            null
+                    );
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void showHWID() {
+            copyHWID();
+            showDialog("Unique ID", "Your Unique ID has been copied to your clipboard.");
     }
 
     public void showControlView() {
