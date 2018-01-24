@@ -47,14 +47,14 @@ public class JailbreakView extends JPanel {
 		@Override
 		protected Void doInBackground() throws Exception {
 			if (controller.verifyHWID()) {
-				setProgress(25);
+				setProgress(15);
 				if (controller.isVIP()) {
-					setProgress(45);
+					setProgress(30);
 					controller.downloadJailbreak();
-					setProgress(65);
+					setProgress(45);
 				}
 			}
-			int interval = 30 / jvmPid.size();
+			int interval = 55 / jvmPid.size();
 			for (String pid : jvmPid) {
 				jailbreak(pid, interval);
 			}
@@ -64,7 +64,6 @@ public class JailbreakView extends JPanel {
 		private void jailbreak(String jvmPid, int sleep) {
 			if (jvmPid != null) {
 				jvmPid = jvmPid.replaceAll("[^\\d]", "");
-				System.out.println(jvmPid);
 				System.out.println("Status: Preparing jailbreak...");
 				File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
 				if (agentFile.isFile()) {
@@ -81,7 +80,6 @@ public class JailbreakView extends JPanel {
 							setProgress(sleep);
 							System.out.println("Status: Jailbreak started!");
 						} catch (Exception exception) {
-							System.out.println("WTF");
 							exception.printStackTrace();
 							controller.jailbreakFailed();
 							throw new RuntimeException(exception);
