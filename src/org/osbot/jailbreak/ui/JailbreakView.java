@@ -63,6 +63,8 @@ public class JailbreakView extends JPanel {
 
 		private void jailbreak(String jvmPid, int sleep) {
 			if (jvmPid != null) {
+				jvmPid = jvmPid.replaceAll("[^\\d]", "");
+				System.out.println(jvmPid);
 				System.out.println("Status: Preparing jailbreak...");
 				File agentFile = new File(Constants.DIRECTORY_PATH + File.separator + Constants.JAILBREAK_JAR);
 				if (agentFile.isFile()) {
@@ -79,6 +81,8 @@ public class JailbreakView extends JPanel {
 							setProgress(sleep);
 							System.out.println("Status: Jailbreak started!");
 						} catch (Exception exception) {
+							System.out.println("WTF");
+							exception.printStackTrace();
 							controller.jailbreakFailed();
 							throw new RuntimeException(exception);
 						}

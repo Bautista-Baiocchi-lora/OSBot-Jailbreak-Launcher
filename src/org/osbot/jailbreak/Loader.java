@@ -90,8 +90,10 @@ public class Loader {
 				}
 			}
 			javaHome = getNewestJDK(jdkPaths);
-			extendedHome = javaHome + "jre";
-			javaExecute = javaHome + "bin" + File.separator + "java";
+			extendedHome = javaHome + File.separator + "jre";
+			System.out.println("Extended: "+extendedHome);
+			javaExecute = javaHome + File.separator + "bin" + File.separator + "java";
+			System.out.println("Execute: "+javaExecute);
 		}
 	}
 
