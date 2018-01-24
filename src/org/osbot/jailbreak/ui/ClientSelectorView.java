@@ -10,6 +10,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ClientSelectorView extends JPanel implements ActionListener {
@@ -29,7 +30,6 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 		add(status, BorderLayout.NORTH);
 
 		this.jvmsModel = new DefaultListModel<>();
-		refreshList();
 		this.jvms = new JList<>(jvmsModel);
 		this.jvms.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.jvms.addListSelectionListener(new ListSelectionListener() {
@@ -42,6 +42,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 				}
 			}
 		});
+		refreshList();
 		add(jvms, BorderLayout.CENTER);
 
 		Box buttonBox = Box.createHorizontalBox();
@@ -61,9 +62,16 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 
 	private void refreshList() {
 		this.jvmsModel.clear();
-		for (Map.Entry<String, VirtualMachineDescriptor> entry : controller.getJVMs().entrySet()) {
+		HashMap<String, VirtualMachineDescriptor> jvms = controller.getJVMs();
+		if (jvms.isEmpty()) {
+			this.jvmsModel.addElement("No OSBot Clients found.");
+			this.jvms.setEnabled(false);
+			return;
+		}
+		for (Map.Entry<String, VirtualMachineDescriptor> entry : jvms.entrySet()) {
 			this.jvmsModel.addElement(entry.getKey());
 		}
+		this.jvms.setEnabled(true);
 	}
 
 	@Override

@@ -7,8 +7,9 @@ import javax.swing.*;
 public class Launcher {
 
 	/*
-	Put the script selector into launcher (different tabs for different client support all at once.)
-	Agent will take script name
+	Put the script selector into launcher
+	each client type (osbot, tribot, dreambot) have their own script selector tab. You pair clients with scripts
+	Agent will take script name + link
 	downloads script
 	auto runs it?
 	 */
