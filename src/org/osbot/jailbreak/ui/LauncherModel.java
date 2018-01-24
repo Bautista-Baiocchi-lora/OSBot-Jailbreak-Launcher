@@ -1,6 +1,8 @@
 package org.osbot.jailbreak.ui;
 
 
+import com.sun.tools.attach.VirtualMachine;
+import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
 
@@ -13,6 +15,9 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class LauncherModel {
 
@@ -72,6 +77,14 @@ public class LauncherModel {
 		return false;
 	}
 
+	public List<VirtualMachineDescriptor> getJVMs() {
+		return VirtualMachine.list().stream().filter(new Predicate<VirtualMachineDescriptor>() {
+			@Override
+			public boolean test(final VirtualMachineDescriptor virtualMachineDescriptor) {
+				return virtualMachineDescriptor.displayName().contains(Constants.APPLICATION_NAME);
+			}
+		}).collect(Collectors.toList());
+	}
 
 	public void copyHWID() {
 		try {

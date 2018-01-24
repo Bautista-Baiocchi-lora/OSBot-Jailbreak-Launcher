@@ -1,5 +1,6 @@
 package org.osbot.jailbreak.ui;
 
+import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.osbot.jailbreak.data.Constants;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class LauncherController extends JFrame implements ActionListener {
 
@@ -20,7 +22,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	private final JMenuItem requestAccess, forums, uniqueID;
 	private LandingView landingView;
 	private DownloadView downloadView;
-	private ControlView controlView;
+	private ClientSelectorView clientSelectorView;
 	private JailbreakView jailbreakView;
 
 	public LauncherController() {
@@ -70,6 +72,10 @@ public class LauncherController extends JFrame implements ActionListener {
 		return null;
 	}
 
+	public List<VirtualMachineDescriptor> getJVMs() {
+		return model.getJVMs();
+	}
+
 	public boolean verifyHWID() {
 		return model.verifyHWID();
 	}
@@ -111,8 +117,8 @@ public class LauncherController extends JFrame implements ActionListener {
 		if (downloadView != null) {
 			remove(downloadView);
 		}
-		this.controlView = new ControlView(this);
-		add(controlView);
+		this.clientSelectorView = new ClientSelectorView(this);
+		add(clientSelectorView);
 		updateInterface();
 	}
 
@@ -128,11 +134,11 @@ public class LauncherController extends JFrame implements ActionListener {
 		}
 	}
 
-	public void jailbreak() {
-		if (controlView != null) {
-			remove(controlView);
+	public void jailbreak(String pid) {
+		if (clientSelectorView != null) {
+			remove(clientSelectorView);
 		}
-		jailbreakView = new JailbreakView(this);
+		jailbreakView = new JailbreakView(this, pid);
 		add(jailbreakView);
 		jailbreakView.start();
 		updateInterface();
