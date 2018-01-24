@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
+import java.util.HashMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -77,13 +77,17 @@ public class LauncherModel {
 		return false;
 	}
 
-	public List<VirtualMachineDescriptor> getJVMs() {
-		return VirtualMachine.list().stream().filter(new Predicate<VirtualMachineDescriptor>() {
+	public HashMap<String, VirtualMachineDescriptor> getJVMs() {
+		final HashMap<String, VirtualMachineDescriptor> jvms = new HashMap<>();
+		for (VirtualMachineDescriptor jvm : VirtualMachine.list().stream().filter(new Predicate<VirtualMachineDescriptor>() {
 			@Override
 			public boolean test(final VirtualMachineDescriptor virtualMachineDescriptor) {
 				return virtualMachineDescriptor.displayName().contains(Constants.APPLICATION_NAME);
 			}
-		}).collect(Collectors.toList());
+		}).collect(Collectors.toList())) {
+			jvms.put("Client " + jvm.id(), jvm);
+		}
+		return jvms;
 	}
 
 	public void copyHWID() {

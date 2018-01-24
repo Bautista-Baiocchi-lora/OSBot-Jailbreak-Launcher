@@ -10,13 +10,14 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 public class ClientSelectorView extends JPanel implements ActionListener {
 
 	private final LauncherController controller;
 	private final JButton jailbreak, refresh;
-	private final JList<VirtualMachineDescriptor> jvms;
-	private final DefaultListModel<VirtualMachineDescriptor> jvmsModel;
+	private final JList<String> jvms;
+	private final DefaultListModel<String> jvmsModel;
 	private final JLabel status;
 
 	public ClientSelectorView(LauncherController controller) {
@@ -56,8 +57,8 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 
 	private void refreshList() {
 		this.jvmsModel.clear();
-		for (VirtualMachineDescriptor jvm : controller.getJVMs()) {
-			this.jvmsModel.addElement(jvm);
+		for (Map.Entry<String, VirtualMachineDescriptor> entry : controller.getJVMs().entrySet()) {
+			this.jvmsModel.addElement(entry.getKey());
 		}
 	}
 
@@ -68,7 +69,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 				refreshList();
 				break;
 			case "jailbreak":
-				controller.jailbreak(jvms.getSelectedValue().id());
+				controller.jailbreak(jvms.getSelectedValue());
 				break;
 
 		}

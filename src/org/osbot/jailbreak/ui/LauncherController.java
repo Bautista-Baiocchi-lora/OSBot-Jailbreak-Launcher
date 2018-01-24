@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
+import java.util.HashMap;
 
 public class LauncherController extends JFrame implements ActionListener {
 
@@ -72,7 +72,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		return null;
 	}
 
-	public List<VirtualMachineDescriptor> getJVMs() {
+	public HashMap<String, VirtualMachineDescriptor> getJVMs() {
 		return model.getJVMs();
 	}
 
@@ -138,7 +138,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		if (clientSelectorView != null) {
 			remove(clientSelectorView);
 		}
-		jailbreakView = new JailbreakView(this, pid);
+		jailbreakView = new JailbreakView(this, pid.replace("Client ", ""));
 		add(jailbreakView);
 		jailbreakView.start();
 		updateInterface();
