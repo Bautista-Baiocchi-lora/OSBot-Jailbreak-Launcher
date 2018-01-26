@@ -3,6 +3,7 @@ package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
+import org.json.simple.JSONObject;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
 import org.osbot.jailbreak.utils.NetUtils;
@@ -89,7 +90,7 @@ public class LauncherModel {
 	public void saveAccount(Account account) {
 		try {
 			final Cipher encryptionCipher = getEncryptionCipher(Cipher.ENCRYPT_MODE);
-			final SealedObject encryptedAccount = new SealedObject(account, encryptionCipher);
+			final SealedObject encryptedAccount = new SealedObject(account.toJson(), encryptionCipher);
 			final CipherOutputStream encryptionOutputStream = new CipherOutputStream(new FileOutputStream(Constants.DIRECTORY_PATH + File.separator + Constants.CONFIG_FILE), encryptionCipher);
 			final ObjectOutputStream objectOutputStream = new ObjectOutputStream(encryptionOutputStream);
 			objectOutputStream.writeObject(encryptedAccount);
@@ -108,7 +109,7 @@ public class LauncherModel {
 				final ObjectInputStream objectInputStream = new ObjectInputStream(encryptionInputStream);
 				final SealedObject encryptedAccount = (SealedObject) objectInputStream.readObject();
 				objectInputStream.close();
-				return (Account) encryptedAccount.getObject(encryptionCipher);
+				return Account.wrap((JSONObject) encryptedAccount.getObject(encryptionCipher));
 			} catch (IOException | InvalidKeyException | ClassNotFoundException | NoSuchPaddingException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException e) {
 				e.printStackTrace();
 			}
