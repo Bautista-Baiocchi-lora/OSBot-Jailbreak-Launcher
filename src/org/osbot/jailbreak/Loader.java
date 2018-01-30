@@ -2,11 +2,9 @@ package org.osbot.jailbreak;
 
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
-import org.osbot.jailbreak.utils.WebsiteAuthenticator;
 
 import javax.swing.*;
 import java.io.*;
-import java.net.Authenticator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -49,12 +47,11 @@ public class Loader {
 	}
 
 	public static void main(String[] args) {
-		Authenticator.setDefault(new WebsiteAuthenticator("imqwi3NK2Wbs8", "tHLy9TH23kjKJ"));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			if (!Constants.LOAD_LOCAL_JAILBREAK) {
+			if (Constants.VERIFY_LAUNCHER_VERSION) {
 				final String VERSION = "1.3";
-				if (!NetUtils.getResponse("http://botupgrade.us/private/launcher/launcher_version.txt").equals(VERSION)) {
+				if (!NetUtils.getResponse("http://botupgrade.us/launcher/launcher_version.txt").equals(VERSION)) {
 					JOptionPane.showConfirmDialog(null, "Launcher out dated! Please download newest version from botupgrade.us/forums/!", "Update Required!", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
 				}

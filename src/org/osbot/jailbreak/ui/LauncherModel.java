@@ -166,7 +166,7 @@ public class LauncherModel {
 		final File environmentJar = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
 		HttpURLConnection connection = null;
 		try {
-			connection = NetUtils.getConnection("url");
+			connection = NetUtils.getConnection("http://botupgrade.us/private/OSBotMod.jar");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

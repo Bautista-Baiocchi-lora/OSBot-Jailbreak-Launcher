@@ -16,7 +16,7 @@ import java.util.Map;
 public class ClientSelectorView extends JPanel implements ActionListener {
 
 	private final LauncherController controller;
-	private final JButton jailbreak, refresh;
+	private final JButton jailbreak, refresh, startClient;
 	private final JList<String> jvms;
 	private final DefaultListModel<String> jvmsModel;
 	private final JLabel status;
@@ -46,6 +46,10 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 		add(jvms, BorderLayout.CENTER);
 
 		Box buttonBox = Box.createHorizontalBox();
+		this.startClient = new JButton("Start OSBot");
+		this.startClient.setActionCommand("start osbot");
+		this.startClient.addActionListener(this::actionPerformed);
+		buttonBox.add(startClient);
 		this.jailbreak = new JButton("Jailbreak");
 		this.jailbreak.addActionListener(this);
 		this.jailbreak.setEnabled(false);
@@ -57,7 +61,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 		buttonBox.add(refresh);
 		add(buttonBox, BorderLayout.SOUTH);
 
-		setPreferredSize(new Dimension(300, 200));
+		setPreferredSize(new Dimension(350, 200));
 	}
 
 	private void refreshList() {
@@ -83,7 +87,9 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 			case "jailbreak":
 				controller.jailbreak(jvms.getSelectedValuesList());
 				break;
-
+			case "start client":
+				//start osbot client code here
+				break;
 		}
 
 	}

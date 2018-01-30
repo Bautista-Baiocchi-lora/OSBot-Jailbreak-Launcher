@@ -1,20 +1,15 @@
 package org.osbot.jailbreak;
 
 import org.osbot.jailbreak.ui.LauncherController;
+import org.osbot.jailbreak.utils.WebsiteAuthenticator;
 
 import javax.swing.*;
+import java.net.Authenticator;
 
 public class Launcher {
 
-	/*
-	Put the script selector into launcher
-	each client type (osbot, tribot, dreambot) have their own script selector tab. You pair clients with scripts
-	Agent will take script name + link
-	downloads script
-	auto runs it?
-	 */
-
 	public static void main(String[] args) {
+		Authenticator.setDefault(new WebsiteAuthenticator("C8VhFM9mRbBm8", "mEYshRY94KYT9"));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
