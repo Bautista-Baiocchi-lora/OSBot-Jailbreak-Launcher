@@ -124,6 +124,10 @@ public class LauncherController extends JFrame implements ActionListener {
 		updateInterface();
 	}
 
+	public void startOSBotClient() {
+		model.startOSBotClient();
+	}
+
 	public void showDownloadView(File file, HttpURLConnection connection) {
 		this.downloadView = new DownloadView(this, file, connection);
 		add(downloadView, BorderLayout.CENTER);
