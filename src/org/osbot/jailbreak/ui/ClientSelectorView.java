@@ -1,7 +1,6 @@
 package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachineDescriptor;
-import org.osbot.jailbreak.data.Constants;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -11,8 +10,6 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,13 +87,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 				controller.jailbreak(jvms.getSelectedValuesList());
 				break;
 			case "start osbot":
-				System.out.println("clicked");
-				ProcessBuilder osbotBuilder = new ProcessBuilder("java", "-cp", Constants.DIRECTORY_PATH + File.separator + "environment.jar", "org.osbot.Z1");
-				try {
-					final Process proc = osbotBuilder.start();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+				controller.startOSBotClient();
 				break;
 		}
 

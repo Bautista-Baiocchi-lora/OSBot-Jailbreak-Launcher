@@ -4,9 +4,13 @@ package org.osbot.jailbreak.ui;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.json.simple.JSONObject;
+import org.osbot.jailbreak.classloader.ASMClassLoader;
+import org.osbot.jailbreak.classloader.ClassArchive;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
+import org.osbot.jailbreak.utils.BotAuth;
 import org.osbot.jailbreak.utils.NetUtils;
+import org.osbot.jailbreak.utils.reflection.ReflectionEngine;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
@@ -186,10 +190,22 @@ public class LauncherModel {
 		}
 	}
 
+	private boolean test = false;
+	ReflectionEngine reflectionEngine = null;
 	public void startOSBotClient() {
-		ProcessBuilder osbotBuilder = new ProcessBuilder("java", "-cp", Constants.DIRECTORY_PATH + File.separator + "environmnent.jar", "org.osbot.Z1");
 		try {
-			osbotBuilder.start();
+			if (!test) {
+				ClassArchive classArchive = new ClassArchive();
+				classArchive.addJar(new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar"));
+				ASMClassLoader classLoader = new ASMClassLoader(classArchive);
+				reflectionEngine = new ReflectionEngine(classLoader);
+				reflectionEngine.getMethodHookValue("org.osbot.Boot", "main", 1, (Object) null);
+			}
+			if (test) {
+				new BotAuth(reflectionEngine);
+			}
+			test = true;
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

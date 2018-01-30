@@ -49,7 +49,7 @@ public class Loader {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			if (Constants.VERIFY_LAUNCHER_VERSION) {
-				final String VERSION = "1.3";
+				final String VERSION = "1.4";
 				if (!NetUtils.getResponse("http://botupgrade.us/launcher/launcher_version.txt").equals(VERSION)) {
 					JOptionPane.showConfirmDialog(null, "Launcher out dated! Please download newest version from botupgrade.us/forums/!", "Update Required!", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
