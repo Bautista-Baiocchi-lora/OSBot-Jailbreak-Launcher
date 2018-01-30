@@ -6,7 +6,6 @@ import org.osbot.jailbreak.utils.NetUtils;
 import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -80,17 +79,35 @@ public class Loader {
 			extendedHome = javaHome + "jre";
 			javaExecute = javaHome + "bin" + File.separator + "java";
 		} else {
-			List<File> combinedFiles = new ArrayList<>();
+
 			File file86 = new File("C:/Program Files (x86)/java");
 			File non86File = new File("C:/Program Files/java");
-			if (file86 != null) {
-				combinedFiles.addAll(Arrays.asList(new File("C:/Program Files (x86)/java").listFiles()));
+			File[] files86 = null;
+			File[] non86Files = null;
+			File[] combinedFiles = null;
+			if (file86.exists() && file86.isDirectory()) {
+				files86 = file86.listFiles();
 			}
-			if (non86File != null) {
-				combinedFiles.addAll(Arrays.asList(new File("C:/Program Files/java").listFiles()));
+			if (non86File.exists() && non86File.isDirectory()) {
+				non86Files = non86File.listFiles();
+			}
+			if (non86Files != null && files86 != null) {
+				combinedFiles = new File[files86.length + non86Files.length];
+				System.arraycopy(files86, 0, combinedFiles, 0, files86.length);
+				System.arraycopy(non86Files, 0, combinedFiles, files86.length, non86Files.length);
+			} else if (non86Files != null && files86 == null) {
+				combinedFiles = new File[non86Files.length];
+				System.arraycopy(non86Files, 0, combinedFiles, 0, non86Files.length);
+			} else if (non86Files == null && files86 != null) {
+				combinedFiles = new File[files86.length];
+				System.arraycopy(files86, 0, combinedFiles, 0, files86.length);
+
+			} else {
+				JOptionPane.showConfirmDialog(null, "No java JDK found. Please see forums for how to fix.", "Java JDK Required!", JOptionPane.DEFAULT_OPTION);
+				System.exit(0);
 			}
 			for (File file : combinedFiles) {
-				if (file.isDirectory() && file.getName().contains("jdk")) {
+				if (file != null && file.exists() && file.isDirectory() && file.getName().contains("jdk")) {
 					jdkPaths.add(file.getAbsolutePath());
 				}
 			}

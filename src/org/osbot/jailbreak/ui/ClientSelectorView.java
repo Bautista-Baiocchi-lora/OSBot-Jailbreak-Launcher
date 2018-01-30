@@ -1,6 +1,10 @@
 package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachineDescriptor;
+import org.osbot.jailbreak.classloader.ClassArchive;
+import org.osbot.jailbreak.data.Constants;
+import org.osbot.jailbreak.utils.reflection.ReflectedClass;
+import org.osbot.jailbreak.utils.reflection.ReflectionEngine;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -10,6 +14,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +26,10 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 	private final JList<String> jvms;
 	private final DefaultListModel<String> jvmsModel;
 	private final JLabel status;
-
+	private ClassArchive classArchive = null;
+	private ReflectionEngine reflectionEngine = null;
+	private JButton button = null;
+	private JLabel botstatus, version = null;
 	public ClientSelectorView(LauncherController controller) {
 		this.controller = controller;
 		this.setLayout(new BorderLayout());
@@ -87,8 +96,37 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 			case "jailbreak":
 				controller.jailbreak(jvms.getSelectedValuesList());
 				break;
-			case "start client":
-				//start osbot client code here
+			case "start osbot":
+				System.out.println("clicked");
+				if (classArchive == null) {
+					classArchive = new ClassArchive();
+					classArchive.addJar(new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar"));
+				}
+				if (reflectionEngine == null) {
+					try {
+						reflectionEngine = new ReflectionEngine(classArchive);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+				ReflectedClass clazz = reflectionEngine.getClass("org.osbot.Boot");
+				if (clazz != null) {
+					String[] params = null;
+					reflectionEngine.getMethodHookValue("org.osbot.Boot", "main", 1, (Object) params);
+					button = (JButton) reflectionEngine.getFieldValue("org.osbot.sB", "IiIIIiiiiiII", null);
+					button.setText("Launch");
+					reflectionEngine.setFieldValue("org.osbot.sB", "IiIIIiiiiiII", button);
+					version = (JLabel) reflectionEngine.getFieldValue("org.osbot.sB", "iiiiiiiiIiiI", null);
+					version.setText("Current Version: 0.0.0.0");
+					reflectionEngine.setFieldValue("org.osbot.sB", "iiiiiiiiIiiI", version);
+					botstatus = (JLabel) reflectionEngine.getFieldValue("org.osbot.sB", "iiiiiiiIIiII", null);
+					botstatus.setForeground(Color.red);
+					botstatus.setText("Fuck Alek & Rest Of OSBot Staff. (But Mostly Alek)");
+					reflectionEngine.setFieldValue("org.osbot.sB", "iiiiiiiIIiII", status);
+				} else {
+					System.out.println("Your enviroment.jar seems to be missing.");
+				}
+
 				break;
 		}
 
