@@ -49,7 +49,7 @@ public class Loader {
 	}
 
 	public static void main(String[] args) {
-		Authenticator.setDefault(new WebsiteAuthenticator("botupgrade", "test"));
+		Authenticator.setDefault(new WebsiteAuthenticator("imqwi3NK2Wbs8", "tHLy9TH23kjKJ"));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			if (!Constants.LOAD_LOCAL_JAILBREAK) {

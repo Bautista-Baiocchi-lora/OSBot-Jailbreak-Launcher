@@ -13,9 +13,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.net.*;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -161,6 +159,30 @@ public class LauncherModel {
 	public void downloadJailbreak() throws IOException {
 		if (!Constants.LOAD_LOCAL_JAILBREAK) {
 			NetUtils.downloadJailbreak(jailbreakUrl);
+		}
+	}
+
+	public void validateEnvironment() {
+		final File environmentJar = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
+		HttpURLConnection connection = null;
+		try {
+			connection = NetUtils.getConnection("url");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (!environmentJar.exists()) {
+			controller.showDownloadView(environmentJar, connection);
+		} else {
+			try {
+				final URLConnection savedFileConnection = environmentJar.toURI().toURL().openConnection();
+				if (connection.getContentLengthLong() != savedFileConnection.getContentLengthLong()) {
+					controller.showDownloadView(environmentJar, connection);
+				} else {
+					controller.showSelectorView();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

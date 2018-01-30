@@ -1,7 +1,6 @@
 package org.osbot.jailbreak.ui;
 
 import com.sun.tools.attach.VirtualMachineDescriptor;
-import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
 
 import javax.swing.*;
@@ -11,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
@@ -124,16 +124,11 @@ public class LauncherController extends JFrame implements ActionListener {
 		updateInterface();
 	}
 
-	private void showDownloadView() {
-		final File environmentJar = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
-		if (!environmentJar.exists()) {
-			this.downloadView = new DownloadView(this, "http://botupgrade.us/private/tools.jar", "environment");
-			add(downloadView, BorderLayout.CENTER);
-			updateInterface();
-			this.downloadView.start();
-		} else {
-			showSelectorView();
-		}
+	public void showDownloadView(File file, HttpURLConnection connection) {
+		this.downloadView = new DownloadView(this, file, connection);
+		add(downloadView, BorderLayout.CENTER);
+		updateInterface();
+		this.downloadView.start();
 	}
 
 	public void rememberAccount(Account account) {
@@ -161,7 +156,7 @@ public class LauncherController extends JFrame implements ActionListener {
 			if (model.verifyHWID()) {
 				if (model.isVIP()) {
 					remove(landingView);
-					showDownloadView();
+					model.validateEnvironment();
 				} else {
 					landingView.setStatus("You are not a VIP.");
 				}
