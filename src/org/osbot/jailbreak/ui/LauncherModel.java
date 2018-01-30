@@ -186,6 +186,15 @@ public class LauncherModel {
 		}
 	}
 
+	public void startOSBotClient() {
+		ProcessBuilder osbotBuilder = new ProcessBuilder("java", "-cp", Constants.DIRECTORY_PATH + File.separator + "environmnent.jar", "org.osbot.Z1");
+		try {
+			osbotBuilder.start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public boolean login(String email, String password) {
 		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
 		String response = null;
