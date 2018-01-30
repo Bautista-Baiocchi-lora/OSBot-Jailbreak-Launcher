@@ -83,7 +83,7 @@ public class DownloadView extends JPanel {
 
         @Override
         protected void done() {
-            controller.showControlView();
+	        controller.showSelectorView();
         }
     }
 

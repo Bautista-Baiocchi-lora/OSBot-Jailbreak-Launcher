@@ -96,7 +96,6 @@ public class LauncherController extends JFrame implements ActionListener {
 		}
 	}
 
-
 	private void showDialog(String title, String message) {
 		JOptionPane.showConfirmDialog(this, message, title, JOptionPane.DEFAULT_OPTION);
 	}
@@ -116,7 +115,7 @@ public class LauncherController extends JFrame implements ActionListener {
 		showDialog("Unique ID", "Your Unique ID has been copied to your clipboard.");
 	}
 
-	public void showControlView() {
+	public void showSelectorView() {
 		if (downloadView != null) {
 			remove(downloadView);
 		}
@@ -133,7 +132,7 @@ public class LauncherController extends JFrame implements ActionListener {
 			updateInterface();
 			this.downloadView.start();
 		} else {
-			showControlView();
+			showSelectorView();
 		}
 	}
 

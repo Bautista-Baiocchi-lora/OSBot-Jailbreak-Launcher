@@ -2,10 +2,13 @@ package org.osbot.jailbreak;
 
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.NetUtils;
+import org.osbot.jailbreak.utils.WebsiteAuthenticator;
 
 import javax.swing.*;
 import java.io.*;
+import java.net.Authenticator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -46,10 +49,11 @@ public class Loader {
 	}
 
 	public static void main(String[] args) {
+		Authenticator.setDefault(new WebsiteAuthenticator("botupgrade", "test"));
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			if (!Constants.LOAD_LOCAL_JAILBREAK) {
-				final String VERSION = "1.2.1";
+				final String VERSION = "1.3";
 				if (!NetUtils.getResponse("http://botupgrade.us/private/launcher/launcher_version.txt").equals(VERSION)) {
 					JOptionPane.showConfirmDialog(null, "Launcher out dated! Please download newest version from botupgrade.us/forums/!", "Update Required!", JOptionPane.DEFAULT_OPTION);
 					System.exit(0);
@@ -79,11 +83,15 @@ public class Loader {
 			extendedHome = javaHome + "jre";
 			javaExecute = javaHome + "bin" + File.separator + "java";
 		} else {
-			File[] files86 = new File("C:/Program Files (x86)/java").listFiles();
-			File[] non86Files = new File("C:/Program Files/java").listFiles();
-			File[] combinedFiles = new File[files86.length + non86Files.length];
-			System.arraycopy(files86, 0, combinedFiles, 0, files86.length);
-			System.arraycopy(non86Files, 0, combinedFiles, files86.length, non86Files.length);
+			List<File> combinedFiles = new ArrayList<>();
+			File file86 = new File("C:/Program Files (x86)/java");
+			File non86File = new File("C:/Program Files/java");
+			if (file86 != null) {
+				combinedFiles.addAll(Arrays.asList(new File("C:/Program Files (x86)/java").listFiles()));
+			}
+			if (non86File != null) {
+				combinedFiles.addAll(Arrays.asList(new File("C:/Program Files/java").listFiles()));
+			}
 			for (File file : combinedFiles) {
 				if (file.isDirectory() && file.getName().contains("jdk")) {
 					jdkPaths.add(file.getAbsolutePath());
