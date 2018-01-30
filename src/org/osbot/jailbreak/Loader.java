@@ -79,7 +79,6 @@ public class Loader {
 			extendedHome = javaHome + "jre";
 			javaExecute = javaHome + "bin" + File.separator + "java";
 		} else {
-
 			File file86 = new File("C:/Program Files (x86)/java");
 			File non86File = new File("C:/Program Files/java");
 			File[] files86 = null;
@@ -101,14 +100,12 @@ public class Loader {
 			} else if (non86Files == null && files86 != null) {
 				combinedFiles = new File[files86.length];
 				System.arraycopy(files86, 0, combinedFiles, 0, files86.length);
-
-			} else {
-				JOptionPane.showConfirmDialog(null, "No java JDK found. Please see forums for how to fix.", "Java JDK Required!", JOptionPane.DEFAULT_OPTION);
-				System.exit(0);
 			}
-			for (File file : combinedFiles) {
-				if (file != null && file.exists() && file.isDirectory() && file.getName().contains("jdk")) {
-					jdkPaths.add(file.getAbsolutePath());
+			if (combinedFiles != null) {
+				for (File file : combinedFiles) {
+					if (file != null && file.exists() && file.isDirectory() && file.getName().contains("jdk")) {
+						jdkPaths.add(file.getAbsolutePath());
+					}
 				}
 			}
 			javaHome = getNewestJDK(jdkPaths);

@@ -30,6 +30,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 	private ReflectionEngine reflectionEngine = null;
 	private JButton button = null;
 	private JLabel botstatus, version = null;
+
 	public ClientSelectorView(LauncherController controller) {
 		this.controller = controller;
 		this.setLayout(new BorderLayout());
@@ -121,7 +122,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 					reflectionEngine.setFieldValue("org.osbot.sB", "iiiiiiiiIiiI", version);
 					botstatus = (JLabel) reflectionEngine.getFieldValue("org.osbot.sB", "iiiiiiiIIiII", null);
 					botstatus.setForeground(Color.red);
-					botstatus.setText("Fuck Alek & Rest Of OSBot Staff. (But Mostly Alek)");
+					botstatus.setText("Fuck Alek & Rest of OSBot Staff. (But Mostly Alek)");
 					reflectionEngine.setFieldValue("org.osbot.sB", "iiiiiiiIIiII", status);
 				} else {
 					System.out.println("Your enviroment.jar seems to be missing.");
