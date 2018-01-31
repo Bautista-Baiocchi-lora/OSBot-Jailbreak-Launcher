@@ -87,7 +87,7 @@ public class ClientSelectorView extends JPanel implements ActionListener {
 				controller.jailbreak(jvms.getSelectedValuesList());
 				break;
 			case "start osbot":
-				controller.startOSBotClient();
+				controller.showOSBotLoginView();
 				break;
 		}
 

@@ -22,15 +22,6 @@ public class Account implements Serializable {
 		return password;
 	}
 
-	public void setEmail(final String email) {
-		this.email = email;
-	}
-
-	public void setPassword(final String password) {
-		this.password = password;
-	}
-
-
 	public JSONObject toJson() {
 		JSONObject account = new JSONObject();
 		account.put("email", email);

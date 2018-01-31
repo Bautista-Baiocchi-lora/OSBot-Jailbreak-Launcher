@@ -27,6 +27,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	private DownloadView downloadView;
 	private ClientSelectorView clientSelectorView;
 	private JailbreakView jailbreakView;
+	public OSBotLoginView osBotLoginView;
 
 	public LauncherController() {
 		super("Jailbreaker Launcher - BotUpgrade.us");
@@ -115,17 +116,28 @@ public class LauncherController extends JFrame implements ActionListener {
 		showDialog("Unique ID", "Your Unique ID has been copied to your clipboard.");
 	}
 
+	public void showOSBotLoginView() {
+		if (clientSelectorView != null) {
+			remove(clientSelectorView);
+		}
+		this.osBotLoginView = new OSBotLoginView(this);
+		add(osBotLoginView);
+		updateInterface();
+	}
+
 	public void showSelectorView() {
 		if (downloadView != null) {
 			remove(downloadView);
+		} else if (osBotLoginView != null) {
+			remove(osBotLoginView);
 		}
 		this.clientSelectorView = new ClientSelectorView(this);
 		add(clientSelectorView);
 		updateInterface();
 	}
 
-	public void startOSBotClient() {
-		model.startOSBotClient();
+	public void startOSBotClient(String username, String password) {
+		model.startOSBotClient(username, password);
 	}
 
 	public void showDownloadView(File file, HttpURLConnection connection) {

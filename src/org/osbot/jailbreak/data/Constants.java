@@ -10,10 +10,9 @@ public class Constants {
 	public static final String APPLICATION_NAME = "BotApplication";
 	public static final String SYMMETRIC_ALGORITHM = "AES";
 	public static final String SYMMETRIC_TRANSFORMATION = "AES/ECB/PKCS5Padding";
-	public static final boolean DEV_MODE = false;
+	public static final boolean DEV_MODE = true;
 	public static final boolean VERIFY_LAUNCHER_VERSION = !DEV_MODE;
 	public static final boolean LOAD_LOCAL_JAILBREAK = DEV_MODE;
-	public static final boolean LOAD_LOCAL_OSBOT = DEV_MODE;
 	public static final boolean RUN_THROUGH_IDE = DEV_MODE;
 
 

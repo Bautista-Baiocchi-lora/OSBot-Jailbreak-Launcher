@@ -191,16 +191,15 @@ public class LauncherModel {
 
 	private boolean appendedClasses = false;
 
-	public void startOSBotClient() {
+	public void startOSBotClient(String username, String password) {
 		if (!appendedClasses) {
 			NetUtils.addClassLoader(ClassLoader.getSystemClassLoader(), "osbot.jar");
 			appendedClasses = true;
 		}
-		if (getOSBotLoginResponse("hellokitty44", "shibby123") == 0) {
+		if (getOSBotLoginResponse(username, password) == 0) {
 			try {
 				ProcessBuilder osbotBuilder = new ProcessBuilder("java", "-Xbootclasspath/p:" + Constants.DIRECTORY_PATH + File.separator + "filter.jar", "-cp", Constants.DIRECTORY_PATH + File.separator + "environment.jar", "org.osbot.BotApplication", "0,1,0,null,null,-1,0,0,0,0,0,null");
-				Process p = osbotBuilder.start();
-
+				osbotBuilder.start();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -234,6 +233,7 @@ public class LauncherModel {
 	public void downloadNewestOSBot() {
 		new OSBotDownload();
 	}
+
 	public boolean login(String email, String password) {
 		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
 		String response = null;
