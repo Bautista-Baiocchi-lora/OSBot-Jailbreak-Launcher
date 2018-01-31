@@ -6,6 +6,8 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
+import java.util.Map;
 
 public class OSBotLoginView extends JPanel implements ActionListener {
 
@@ -22,7 +24,13 @@ public class OSBotLoginView extends JPanel implements ActionListener {
 
 		Box fields = Box.createVerticalBox();
 
-		fields.add(new JLabel("PLEASE USE AN ALTERNATE OSBOT ACCOUNT!"));
+		JLabel label = new JLabel("Please do not use your main OSBot account");
+		Font font = label.getFont();
+		label.setFont(font.deriveFont(font.getStyle() | Font.BOLD));
+		Map attributes = font.getAttributes();
+		attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+		label.setFont(font.deriveFont(attributes));
+		fields.add(label);
 
 		Box usernameLayout = Box.createHorizontalBox();
 		usernameLayout.add(new JLabel("OSBot username: "));
