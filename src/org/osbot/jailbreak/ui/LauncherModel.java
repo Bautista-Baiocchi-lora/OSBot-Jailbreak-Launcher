@@ -216,9 +216,7 @@ public class LauncherModel {
 			for (Method m : loginClass.getDeclaredMethods()) {
 				if (m.getParameterCount() == 3) {
 					m.setAccessible(true);
-					System.out.println("Invoking");
 					int i = (int) m.invoke(null, user, pass, false);
-					System.out.println(i);
 					return i;
 				}
 			}
