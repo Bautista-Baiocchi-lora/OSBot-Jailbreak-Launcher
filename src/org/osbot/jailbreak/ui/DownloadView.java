@@ -1,5 +1,7 @@
 package org.osbot.jailbreak.ui;
 
+import org.osbot.jailbreak.utils.NetUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -78,6 +80,7 @@ public class DownloadView extends JPanel {
 
 		@Override
 		protected void done() {
+			NetUtils.unZip(file.getAbsolutePath());
 			controller.showSelectorView();
 		}
 	}

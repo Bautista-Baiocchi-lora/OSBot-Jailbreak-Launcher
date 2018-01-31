@@ -4,19 +4,17 @@ package org.osbot.jailbreak.ui;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.json.simple.JSONObject;
-import org.osbot.jailbreak.classloader.ASMClassLoader;
-import org.osbot.jailbreak.classloader.ClassArchive;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
-import org.osbot.jailbreak.utils.BotAuth;
 import org.osbot.jailbreak.utils.NetUtils;
-import org.osbot.jailbreak.utils.reflection.ReflectionEngine;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.io.*;
+import java.lang.reflect.Method;
 import java.net.*;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
@@ -167,20 +165,20 @@ public class LauncherModel {
 	}
 
 	public void validateEnvironment() {
-		final File environmentJar = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
+		final File environmentZip = new File(Constants.DIRECTORY_PATH + File.separator + "environment.zip");
 		HttpURLConnection connection = null;
 		try {
-			connection = NetUtils.getConnection("http://botupgrade.us/private/OSBotMod.jar");
+			connection = NetUtils.getConnection("http://botupgrade.us/private/osbot155/environment.zip");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if (!environmentJar.exists()) {
-			controller.showDownloadView(environmentJar, connection);
+		if (!environmentZip.exists()) {
+			controller.showDownloadView(environmentZip, connection);
 		} else {
 			try {
-				final URLConnection savedFileConnection = environmentJar.toURI().toURL().openConnection();
+				final URLConnection savedFileConnection = environmentZip.toURI().toURL().openConnection();
 				if (connection.getContentLengthLong() != savedFileConnection.getContentLengthLong()) {
-					controller.showDownloadView(environmentJar, connection);
+					controller.showDownloadView(environmentZip, connection);
 				} else {
 					controller.showSelectorView();
 				}
@@ -190,27 +188,49 @@ public class LauncherModel {
 		}
 	}
 
-	private boolean test = false;
-	ReflectionEngine reflectionEngine = null;
-	public void startOSBotClient() {
-		try {
-			if (!test) {
-				ClassArchive classArchive = new ClassArchive();
-				classArchive.addJar(new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar"));
-				ASMClassLoader classLoader = new ASMClassLoader(classArchive);
-				reflectionEngine = new ReflectionEngine(classLoader);
-				reflectionEngine.getMethodHookValue("org.osbot.Boot", "main", 1, (Object) null);
-			}
-			if (test) {
-				new BotAuth(reflectionEngine);
-			}
-			test = true;
+	private boolean appendedClasses = false;
 
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void startOSBotClient() {
+		if (!appendedClasses) {
+			NetUtils.addToSystemClassLoader();
+			appendedClasses = true;
 		}
+		if (getOSBotLoginResponse("hellokitty44", "shibby123") == 0) {
+			try {
+				ProcessBuilder osbotBuilder = new ProcessBuilder("java", "-Xbootclasspath/p:" + Constants.DIRECTORY_PATH + File.separator + "filter.jar", "-cp", Constants.DIRECTORY_PATH + File.separator + "environment.jar", "org.osbot.BotApplication", "0,1,0,null,null,-1,0,0,0,0,0,null");
+				Process p = osbotBuilder.start();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			JOptionPane.showConfirmDialog(null, "There was an error processing your login, please review your details and try again.", "Error!", JOptionPane.DEFAULT_OPTION);
+		}
+
+
 	}
 
+	public int getOSBotLoginResponse(String user, String pass) {
+		try {
+			Class<?> loginClass = ClassLoader.getSystemClassLoader().loadClass("org.osbot." + loginClass());
+			for (Method m : loginClass.getDeclaredMethods()) {
+				if (m.getParameterCount() == 3) {
+					m.setAccessible(true);
+					System.out.println("Invoking");
+					int i = (int) m.invoke(null, user, pass, false);
+					System.out.println(i);
+					return i;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	private String loginClass() throws Exception {
+		return NetUtils.readUrl("http://www.botupgrade.us/private/main.txt");
+	}
 	public boolean login(String email, String password) {
 		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
 		String response = null;

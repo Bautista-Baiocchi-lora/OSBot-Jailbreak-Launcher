@@ -4,9 +4,12 @@ import org.osbot.jailbreak.data.Constants;
 
 import java.awt.*;
 import java.io.*;
+import java.lang.reflect.Method;
 import java.net.*;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public class NetUtils {
 
@@ -17,6 +20,39 @@ public class NetUtils {
         return connection;
     }
 
+    public static void unZip(String zipFile) {
+
+        byte[] buffer = new byte[1024];
+
+        try {
+
+            File folder = new File(Constants.DIRECTORY_PATH);
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+
+            ZipInputStream zis =
+                    new ZipInputStream(new FileInputStream(zipFile));
+            ZipEntry ze = zis.getNextEntry();
+            while (ze != null) {
+                String fileName = ze.getName();
+                File newFile = new File(folder + File.separator + fileName);
+                System.out.println("file unzip : " + newFile.getAbsoluteFile());
+                new File(newFile.getParent()).mkdirs();
+                FileOutputStream fos = new FileOutputStream(newFile);
+                int len;
+                while ((len = zis.read(buffer)) > 0) {
+                    fos.write(buffer, 0, len);
+                }
+                fos.close();
+                ze = zis.getNextEntry();
+            }
+            zis.closeEntry();
+            zis.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     public static String postResponse(String url, String parameter) throws IOException {
         HttpURLConnection connection = getConnection(url);
         connection.setRequestMethod("POST");
@@ -92,4 +128,37 @@ public class NetUtils {
         }
         return false;
     }
+
+    public static String readUrl(String urlString) throws Exception {
+        BufferedReader reader = null;
+        try {
+            URL url = new URL(urlString);
+            reader = new BufferedReader(new InputStreamReader(url.openStream()));
+            StringBuffer buffer = new StringBuffer();
+            int read;
+            char[] chars = new char[1024];
+            while ((read = reader.read(chars)) != -1)
+                buffer.append(chars, 0, read);
+
+            return buffer.toString();
+        } finally {
+            if (reader != null)
+                reader.close();
+        }
+    }
+
+    public static void addToSystemClassLoader() {
+        try {
+            File file = new File(Constants.DIRECTORY_PATH + File.separator + "osbot.jar");
+            URL url = file.toURI().toURL();
+
+            URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+            Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+            method.setAccessible(true);
+            method.invoke(classLoader, url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
