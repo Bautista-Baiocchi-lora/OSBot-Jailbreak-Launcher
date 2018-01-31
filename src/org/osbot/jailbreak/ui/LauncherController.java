@@ -140,9 +140,19 @@ public class LauncherController extends JFrame implements ActionListener {
 		model.startOSBotClient(username, password);
 	}
 
-	public void showDownloadView(File file, HttpURLConnection connection) {
-		this.downloadView = new DownloadView(this, file, connection);
+	public void showEnvironmentDownload(File file, HttpURLConnection connection) {
+		this.downloadView = new DownloadView(this, "environment", file, connection);
 		add(downloadView, BorderLayout.CENTER);
+		updateInterface();
+		this.downloadView.start();
+	}
+
+	public void showOSBotJarDownload(File file, HttpURLConnection connection) {
+		if (downloadView != null) {
+			remove(downloadView);
+		}
+		this.downloadView = new DownloadView(this, "osbot", file, connection);
+		add(downloadView);
 		updateInterface();
 		this.downloadView.start();
 	}
@@ -165,6 +175,14 @@ public class LauncherController extends JFrame implements ActionListener {
 		add(jailbreakView);
 		jailbreakView.start();
 		updateInterface();
+	}
+
+	public void environmentValidated() {
+		model.validateOSBotClient();
+	}
+
+	public void osbotJarValidated() {
+		showSelectorView();
 	}
 
 	public void login(String email, String password) {

@@ -16,12 +16,12 @@ public class DownloadView extends JPanel {
 	private final Downloader downloader;
 
 
-	public DownloadView(LauncherController controller, File file, HttpURLConnection connection) {
+	public DownloadView(LauncherController controller, String name, File file, HttpURLConnection connection) {
 		this.controller = controller;
 
 		this.progressBar = new JProgressBar(0, 100);
 		this.progressBar.setStringPainted(true);
-		this.progressBar.setString("Loading environment...");
+		this.progressBar.setString("Downloading " + name + "...");
 		this.progressBar.setPreferredSize(new Dimension(300, 50));
 
 		downloader = new Downloader(file, connection);
@@ -30,6 +30,8 @@ public class DownloadView extends JPanel {
 			public void propertyChange(final PropertyChangeEvent evt) {
 				if ("progress".equals(evt.getPropertyName())) {
 					progressBar.setValue((Integer) evt.getNewValue());
+				} else {
+
 				}
 			}
 		});
@@ -40,6 +42,10 @@ public class DownloadView extends JPanel {
 		if (downloader != null) {
 			downloader.execute();
 		}
+	}
+
+	public boolean isDownloading() {
+		return !downloader.isDone() && !downloader.isCancelled();
 	}
 
 	private class Downloader extends SwingWorker<Void, Void> {
@@ -80,8 +86,12 @@ public class DownloadView extends JPanel {
 
 		@Override
 		protected void done() {
-			NetUtils.unZip(file.getAbsolutePath());
-			controller.showSelectorView();
+			if (file.getName().endsWith("zip")) {
+				NetUtils.unZip(file.getAbsolutePath());
+				controller.environmentValidated();
+			} else {
+				controller.osbotJarValidated();
+			}
 		}
 	}
 

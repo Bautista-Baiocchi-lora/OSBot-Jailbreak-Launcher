@@ -7,10 +7,10 @@ import org.json.simple.JSONObject;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
 import org.osbot.jailbreak.utils.NetUtils;
-import org.osbot.jailbreak.utils.OSBotDownload;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
+import javax.net.ssl.HttpsURLConnection;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -174,14 +174,14 @@ public class LauncherModel {
 			e.printStackTrace();
 		}
 		if (!environmentZip.exists()) {
-			controller.showDownloadView(environmentZip, connection);
+			controller.showEnvironmentDownload(environmentZip, connection);
 		} else {
 			try {
 				final URLConnection savedFileConnection = environmentZip.toURI().toURL().openConnection();
 				if (connection.getContentLengthLong() != savedFileConnection.getContentLengthLong()) {
-					controller.showDownloadView(environmentZip, connection);
+					controller.showEnvironmentDownload(environmentZip, connection);
 				} else {
-					controller.showSelectorView();
+					controller.environmentValidated();
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -206,8 +206,6 @@ public class LauncherModel {
 		} else {
 			JOptionPane.showConfirmDialog(null, "There was an error processing your login, please review your details and try again.", "Error!", JOptionPane.DEFAULT_OPTION);
 		}
-
-
 	}
 
 	public int getOSBotLoginResponse(String user, String pass) {
@@ -230,8 +228,42 @@ public class LauncherModel {
 		return NetUtils.readUrl("http://www.botupgrade.us/private/main.txt");
 	}
 
-	public void downloadNewestOSBot() {
-		new OSBotDownload();
+	public void validateOSBotClient() {
+		HttpsURLConnection urlConnection = getOSBotSSLConnection("https://osbot.org/mvc/get");
+		urlConnection.setRequestProperty("User-Agent", "OSBot Comms");
+		try {
+			long contentLength = urlConnection.getContentLengthLong();
+			File fileLocation = new File(Constants.DIRECTORY_PATH + File.separator + "osbot.jar");
+			final long savedContentLength = fileLocation.toURI().toURL().openConnection().getContentLengthLong();
+			if (savedContentLength != contentLength) {
+				controller.showOSBotJarDownload(fileLocation, urlConnection);
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private HttpsURLConnection getOSBotSSLConnection(String link) {
+		try {
+			Class<?> c = classLoader.loadClass("org.osbot.LPT8");
+			if (c != null) {
+				for (Method m : c.getDeclaredMethods()) {
+					if (m.getName().equals("IiIiiiiiIIII")) {
+						if (m.getParameterCount() == 1) {
+							if (m.getReturnType().toGenericString().equals("public abstract class javax.net.ssl.HttpsURLConnection")) {
+								m.setAccessible(true);
+								return (HttpsURLConnection) m.invoke(null, link);
+							}
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public boolean login(String email, String password) {
