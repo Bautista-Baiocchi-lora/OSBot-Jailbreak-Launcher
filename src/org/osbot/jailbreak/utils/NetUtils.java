@@ -147,12 +147,11 @@ public class NetUtils {
         }
     }
 
-    public static void addToSystemClassLoader() {
+    public static void addClassLoader(ClassLoader cl, String jarName) {
         try {
-            File file = new File(Constants.DIRECTORY_PATH + File.separator + "osbot.jar");
+            File file = new File(Constants.DIRECTORY_PATH + File.separator + jarName);
             URL url = file.toURI().toURL();
-
-            URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+            URLClassLoader classLoader = (URLClassLoader) cl;
             Method method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
             method.setAccessible(true);
             method.invoke(classLoader, url);

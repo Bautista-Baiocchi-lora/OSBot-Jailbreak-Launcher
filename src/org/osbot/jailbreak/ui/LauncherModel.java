@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
 import org.osbot.jailbreak.utils.NetUtils;
+import org.osbot.jailbreak.utils.OSBotDownload;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
@@ -24,7 +25,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class LauncherModel {
-
+	private ClassLoader classLoader;
 	private final LauncherController controller;
 	private int id;
 	private String jailbreakUrl, hwid;
@@ -192,7 +193,7 @@ public class LauncherModel {
 
 	public void startOSBotClient() {
 		if (!appendedClasses) {
-			NetUtils.addToSystemClassLoader();
+			NetUtils.addClassLoader(ClassLoader.getSystemClassLoader(), "osbot.jar");
 			appendedClasses = true;
 		}
 		if (getOSBotLoginResponse("hellokitty44", "shibby123") == 0) {
@@ -228,6 +229,10 @@ public class LauncherModel {
 
 	private String loginClass() throws Exception {
 		return NetUtils.readUrl("http://www.botupgrade.us/private/main.txt");
+	}
+
+	public void downloadNewestOSBot() {
+		new OSBotDownload();
 	}
 	public boolean login(String email, String password) {
 		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
