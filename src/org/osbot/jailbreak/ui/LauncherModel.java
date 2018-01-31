@@ -25,7 +25,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class LauncherModel {
-	private ClassLoader classLoader;
 	private final LauncherController controller;
 	private int id;
 	private String jailbreakUrl, hwid;
@@ -228,8 +227,17 @@ public class LauncherModel {
 		return NetUtils.readUrl("http://www.botupgrade.us/private/main.txt");
 	}
 
-	public void validateOSBotClient() {
-		HttpsURLConnection urlConnection = getOSBotSSLConnection("https://osbot.org/mvc/get");
+    private ClassLoader downloadClassLoader;
+
+    public void validateOSBotClient() {
+        File environment = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
+        try {
+            String loaderURL = "" + environment.toURI().toURL();
+            downloadClassLoader = new URLClassLoader(new URL[]{new URL(loaderURL)});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        HttpsURLConnection urlConnection = getOSBotSSLConnection("https://osbot.org/mvc/get");
 		urlConnection.setRequestProperty("User-Agent", "OSBot Comms");
 		try {
 			long contentLength = urlConnection.getContentLengthLong();
@@ -247,8 +255,8 @@ public class LauncherModel {
 
 	private HttpsURLConnection getOSBotSSLConnection(String link) {
 		try {
-			Class<?> c = classLoader.loadClass("org.osbot.LPT8");
-			if (c != null) {
+            Class<?> c = downloadClassLoader.loadClass("org.osbot.LPT8");
+            if (c != null) {
 				for (Method m : c.getDeclaredMethods()) {
 					if (m.getName().equals("IiIiiiiiIIII")) {
 						if (m.getParameterCount() == 1) {
