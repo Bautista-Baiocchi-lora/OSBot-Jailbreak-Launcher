@@ -227,17 +227,17 @@ public class LauncherModel {
 		return NetUtils.readUrl("http://www.botupgrade.us/private/main.txt");
 	}
 
-    private ClassLoader downloadClassLoader;
+	private ClassLoader downloadClassLoader;
 
-    public void validateOSBotClient() {
-        File environment = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
-        try {
-            String loaderURL = "" + environment.toURI().toURL();
-            downloadClassLoader = new URLClassLoader(new URL[]{new URL(loaderURL)});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        HttpsURLConnection urlConnection = getOSBotSSLConnection("https://osbot.org/mvc/get");
+	public void validateOSBotClient() {
+		File environment = new File(Constants.DIRECTORY_PATH + File.separator + "environment.jar");
+		try {
+			String loaderURL = "" + environment.toURI().toURL();
+			downloadClassLoader = new URLClassLoader(new URL[] {new URL(loaderURL)});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		HttpsURLConnection urlConnection = getOSBotSSLConnection("https://osbot.org/mvc/get");
 		urlConnection.setRequestProperty("User-Agent", "OSBot Comms");
 		try {
 			long contentLength = urlConnection.getContentLengthLong();
@@ -245,6 +245,8 @@ public class LauncherModel {
 			final long savedContentLength = fileLocation.toURI().toURL().openConnection().getContentLengthLong();
 			if (savedContentLength != contentLength) {
 				controller.showOSBotJarDownload(fileLocation, urlConnection);
+			} else {
+				controller.osbotJarValidated();
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -255,8 +257,8 @@ public class LauncherModel {
 
 	private HttpsURLConnection getOSBotSSLConnection(String link) {
 		try {
-            Class<?> c = downloadClassLoader.loadClass("org.osbot.LPT8");
-            if (c != null) {
+			Class<?> c = downloadClassLoader.loadClass("org.osbot.LPT8");
+			if (c != null) {
 				for (Method m : c.getDeclaredMethods()) {
 					if (m.getName().equals("IiIiiiiiIIII")) {
 						if (m.getParameterCount() == 1) {
