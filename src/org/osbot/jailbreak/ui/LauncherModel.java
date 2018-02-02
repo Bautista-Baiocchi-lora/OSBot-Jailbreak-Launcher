@@ -4,9 +4,13 @@ package org.osbot.jailbreak.ui;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import org.json.simple.JSONObject;
+import org.osbot.jailbreak.classloader.ClassArchive;
 import org.osbot.jailbreak.data.Constants;
 import org.osbot.jailbreak.utils.Account;
 import org.osbot.jailbreak.utils.NetUtils;
+import org.osbot.jailbreak.utils.reflection.ReflectedClass;
+import org.osbot.jailbreak.utils.reflection.ReflectedMethod;
+import org.osbot.jailbreak.utils.reflection.ReflectionEngine;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
@@ -189,11 +193,20 @@ public class LauncherModel {
 	}
 
 	private boolean appendedClasses = false;
-
+	private ReflectionEngine reflectionEngine;
 	public void startOSBotClient(String username, String password) {
 		if (!appendedClasses) {
-			NetUtils.addClassLoader(ClassLoader.getSystemClassLoader(), "osbot.jar");
-			appendedClasses = true;
+			File file = new File(Constants.DIRECTORY_PATH + File.separator + "osbot.jar");
+			ClassArchive classArchive = new ClassArchive();
+			try {
+				classArchive.addJar(new File(Constants.DIRECTORY_PATH + File.separator + "Network.jar").toURI().toURL());
+				classArchive.addJar(file);
+				reflectionEngine = new ReflectionEngine(classArchive);
+				classArchive.dump(new File(Constants.DIRECTORY_PATH + File.separator + "Test.jar"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				appendedClasses = true;
+			}
 		}
 		if (getOSBotLoginResponse(username, password) == 0) {
 			try {
@@ -205,15 +218,16 @@ public class LauncherModel {
 		} else {
 			JOptionPane.showConfirmDialog(null, "There was an error processing your login, please review your details and try again.", "Error!", JOptionPane.DEFAULT_OPTION);
 		}
+
 	}
 
 	public int getOSBotLoginResponse(String user, String pass) {
 		try {
-			Class<?> loginClass = ClassLoader.getSystemClassLoader().loadClass("org.osbot." + loginClass());
-			for (Method m : loginClass.getDeclaredMethods()) {
+			ReflectedClass loginClass = reflectionEngine.getClass("org.osbot." + loginClass());
+			for (ReflectedMethod m : loginClass.getMethods()) {
 				if (m.getParameterCount() == 3) {
-					m.setAccessible(true);
-					int i = (int) m.invoke(null, user, pass, false);
+					int i = (int) m.invoke(user, pass, false);
+					System.out.println(i);
 					return i;
 				}
 			}

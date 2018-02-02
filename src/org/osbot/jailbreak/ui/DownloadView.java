@@ -14,11 +14,11 @@ public class DownloadView extends JPanel {
 	private final JProgressBar progressBar;
 	private final LauncherController controller;
 	private final Downloader downloader;
-
+	private final File file;
 
 	public DownloadView(LauncherController controller, String name, File file, HttpURLConnection connection) {
 		this.controller = controller;
-
+		this.file = file;
 		this.progressBar = new JProgressBar(0, 100);
 		this.progressBar.setStringPainted(true);
 		this.progressBar.setString("Downloading " + name + "...");
