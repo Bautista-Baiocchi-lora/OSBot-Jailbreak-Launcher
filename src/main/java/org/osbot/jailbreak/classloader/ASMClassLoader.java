@@ -24,7 +24,7 @@ public class ASMClassLoader extends ClassLoader {
 	public ClassArchive classArchive;
 
 	public ASMClassLoader(final ClassArchive classArchive) {
-		this.classCache = new HashMap<>();
+		this.classCache = new HashMap<String, Class<?>>();
 		this.classArchive = classArchive;
 
 	}

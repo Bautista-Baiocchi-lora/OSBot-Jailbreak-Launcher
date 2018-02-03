@@ -203,7 +203,6 @@ public class LauncherModel {
 				classArchive.addJar(new File(Constants.DIRECTORY_PATH + File.separator + "Network.jar").toURI().toURL());
 				classArchive.addJar(file);
 				reflectionEngine = new ReflectionEngine(classArchive);
-				classArchive.dump(new File(Constants.DIRECTORY_PATH + File.separator + "Test.jar"));
 			} catch (Exception e) {
 				e.printStackTrace();
 				appendedClasses = true;
@@ -290,7 +289,7 @@ public class LauncherModel {
 	}
 
 	public boolean login(String email, String password) {
-		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
+		final String LOGIN_URL = "http://www.botupgrade.us/private/check/login.php?email=" + email + "&password=" + password;
 		String response = null;
 		id = 1;
 		try {
