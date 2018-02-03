@@ -128,7 +128,8 @@ public class LauncherController extends JFrame implements ActionListener {
 	public void showSelectorView() {
 		if (downloadView != null) {
 			remove(downloadView);
-		} else if (osBotLoginView != null) {
+		}
+		if (osBotLoginView != null) {
 			remove(osBotLoginView);
 		}
 		this.clientSelectorView = new ClientSelectorView(this);
