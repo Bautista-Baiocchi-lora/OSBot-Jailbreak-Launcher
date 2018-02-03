@@ -13,5 +13,4 @@ public class Constants {
 	public static final boolean LOAD_LOCAL_JAILBREAK = DEV_MODE;
 	public static final boolean RUN_THROUGH_IDE = DEV_MODE;
 
-
 }

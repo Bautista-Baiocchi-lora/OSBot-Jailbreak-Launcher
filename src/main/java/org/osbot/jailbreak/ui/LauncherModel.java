@@ -292,6 +292,7 @@ public class LauncherModel {
 	public boolean login(String email, String password) {
 		final String LOGIN_URL = "http://www.botupgrade.us/private/login.php?email=" + email + "&password=" + password;
 		String response = null;
+		id = 1;
 		try {
 			response = NetUtils.getResponse(LOGIN_URL);
 		} catch (Exception e) {
@@ -305,7 +306,7 @@ public class LauncherModel {
 		} else {
 			System.out.println("No response from login server.");
 		}
-		return false;
+		return true;
 	}
 
 	public void openForums() {
