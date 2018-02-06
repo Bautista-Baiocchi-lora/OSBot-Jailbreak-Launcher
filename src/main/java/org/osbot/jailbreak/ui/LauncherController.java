@@ -30,7 +30,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	public OSBotLoginView osBotLoginView;
 
 	public LauncherController() {
-		super("Jailbreaker Launcher - BotUpgrade.us");
+		super("Jailbreaker Launcher - DiscountBotting");
 		this.model = new LauncherModel(this);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -128,8 +128,7 @@ public class LauncherController extends JFrame implements ActionListener {
 	public void showSelectorView() {
 		if (downloadView != null) {
 			remove(downloadView);
-		}
-		if (osBotLoginView != null) {
+		} else if (osBotLoginView != null) {
 			remove(osBotLoginView);
 		}
 		this.clientSelectorView = new ClientSelectorView(this);

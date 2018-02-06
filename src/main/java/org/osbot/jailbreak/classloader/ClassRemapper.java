@@ -13,7 +13,9 @@ public class ClassRemapper extends Remapper {
 	private static HashMap<String, String> remapNames = new HashMap<String, String>();
 
 	static {
-		remapNames.put("java/net/NetworkInterface", "org/NetworkInterface");
+		remapNames.put("java/net/NetworkInterface", "org/osbot/nnI");
+		remapNames.put("java/lang/management/RuntimeMXBean", "org/osbot/rMB");
+		remapNames.put("java/lang/management/ManagementFactory", "org/osbot/mmf");
 	}
 
 	@Override

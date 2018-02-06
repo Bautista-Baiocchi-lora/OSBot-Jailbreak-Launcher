@@ -45,7 +45,7 @@ public class LauncherModel {
 
 
 	public boolean isVIP() {
-		final String VERIFY_VIP_URL = "http://botupgrade.us/private/check/paid.php?";
+		final String VERIFY_VIP_URL = "http://discountbotting.com/private/check/paid.php?";
 		StringBuilder parameters = new StringBuilder();
 		parameters.append("uid=").append(id).append("&submit=Search");
 		String response = null;
@@ -64,7 +64,7 @@ public class LauncherModel {
 
 	public boolean verifyHWID() {
 		StringBuilder parameters = new StringBuilder();
-		final String VERIFY_ACCESS_URL = "http://botupgrade.us/hwid/check/check.php?";
+		final String VERIFY_ACCESS_URL = "http://discountbotting.com/hwid/check/check.php?";
 		try {
 			parameters.append("search=").append(hwid = getHWID()).append("&submit=Search");
 		} catch (UnsupportedEncodingException e) {
@@ -175,7 +175,7 @@ public class LauncherModel {
 		final File environmentZip = new File(Constants.DIRECTORY_PATH + File.separator + "environment.zip");
 		HttpURLConnection connection = null;
 		try {
-			connection = NetUtils.getConnection("http://botupgrade.us/private/osbot155/environment.zip");
+			connection = NetUtils.getConnection("http://discountbotting.com/private/osbot162/environment.zip");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -238,7 +238,7 @@ public class LauncherModel {
 	}
 
 	private String loginClass() throws Exception {
-		return NetUtils.readUrl("http://www.botupgrade.us/private/main.txt");
+		return NetUtils.readUrl("http://discountbotting.com/private/main.txt");
 	}
 
 	public void validateOSBotClient() {
@@ -269,10 +269,10 @@ public class LauncherModel {
 
 	private HttpsURLConnection getOSBotSSLConnection(String link) {
 		try {
-			Class<?> c = downloadClassLoader.loadClass("org.osbot.LPT8");
+			Class<?> c = downloadClassLoader.loadClass("org.osbot.PA");
 			if (c != null) {
 				for (Method m : c.getDeclaredMethods()) {
-					if (m.getName().equals("IiIiiiiiIIII")) {
+					if (m.getName().equals("IiIiiiiiIiIi")) {
 						if (m.getParameterCount() == 1) {
 							if (m.getReturnType().toGenericString().equals("public abstract class javax.net.ssl.HttpsURLConnection")) {
 								m.setAccessible(true);
@@ -289,7 +289,7 @@ public class LauncherModel {
 	}
 
 	public boolean login(String email, String password) {
-		final String LOGIN_URL = "http://www.botupgrade.us/private/check/login.php?email=" + email + "&password=" + password;
+		final String LOGIN_URL = "http://discountbotting.com/private/check/login.php?email=" + email + "&password=" + password;
 		String response = null;
 		id = 1;
 		try {
@@ -305,12 +305,12 @@ public class LauncherModel {
 		} else {
 			System.out.println("No response from login server.");
 		}
-		return true;
+		return false;
 	}
 
 	public void openForums() {
 		try {
-			NetUtils.openWebpage(new URL("http://botupgrade.us/forums/").toURI());
+			NetUtils.openWebpage(new URL("http://discountbotting.com/forums/").toURI());
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		} catch (MalformedURLException e1) {
@@ -320,7 +320,7 @@ public class LauncherModel {
 
 	public void openRegisterPage() {
 		try {
-			NetUtils.openWebpage(new URL("http://botupgrade.us/forums/?_fromLogout=1").toURI());
+			NetUtils.openWebpage(new URL("http://discountbotting.com/forums/?_fromLogout=1").toURI());
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		} catch (MalformedURLException e1) {
@@ -330,7 +330,7 @@ public class LauncherModel {
 
 	public void openRequestAccessPage() {
 		try {
-			NetUtils.openWebpage(new URL("http://botupgrade.us/forums/index.php?/topic/6-request-trial/").toURI());
+			NetUtils.openWebpage(new URL("http://discountbotting.com/forums/index.php?/topic/6-request-trial/").toURI());
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
 		} catch (MalformedURLException e1) {
