@@ -120,6 +120,9 @@ public class LauncherController extends JFrame implements ActionListener {
 		if (clientSelectorView != null) {
 			remove(clientSelectorView);
 		}
+		if (downloadView != null) {
+			remove(downloadView);
+		}
 		this.osBotLoginView = new OSBotLoginView(this);
 		add(osBotLoginView);
 		updateInterface();
@@ -128,7 +131,8 @@ public class LauncherController extends JFrame implements ActionListener {
 	public void showSelectorView() {
 		if (downloadView != null) {
 			remove(downloadView);
-		} else if (osBotLoginView != null) {
+		}
+		if (osBotLoginView != null) {
 			remove(osBotLoginView);
 		}
 		this.clientSelectorView = new ClientSelectorView(this);

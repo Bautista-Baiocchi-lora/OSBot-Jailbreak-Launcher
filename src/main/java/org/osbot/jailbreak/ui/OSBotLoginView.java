@@ -67,9 +67,7 @@ public class OSBotLoginView extends JPanel implements ActionListener {
 	public void actionPerformed(final ActionEvent e) {
 		switch (e.getActionCommand()) {
 			case "login":
-				controller.showSelectorView();
 				controller.startOSBotClient(username.getText(), String.valueOf(password.getPassword()));
-				break;
 			case "cancel":
 				controller.showSelectorView();
 				break;
